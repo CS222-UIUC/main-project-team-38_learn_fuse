@@ -1,0 +1,42 @@
+Week 1 (9/18-9/24)
+    1. Finalize tech stack, project goals, deadlines, and assign roles
+    2. Install libraries and dependencies, set up work environment
+    3. Set up Docker
+    4. UI mockup draft 
+
+Week 2 (9/25-10/1)
+    1. Finalize UI mockup 
+    2. Begin front-end work on About/Home page and create templates for the other pages
+    3. Create and Code “What Learning Type Are You” quiz for About/Home page
+
+Week 3 (10/2-10/8)
+    1. Finish front-end work on About/Home page
+    2. Work on front-end for Kinesthetic and Scribble pages
+
+Week 4 (10/9-10/15)
+    1. Handle requests for Kinesthetic and Scribble pages
+    2. Start and finalize integration for Kinesthetic and Scribble pages
+
+Week 5 (10/16-10/22)
+    1. Research API required for Visual learning type
+    2. Start and finalize front-end work on Visual page
+
+Week 6 (10/23-10/29)
+    1. Handle requests for Visual page
+    2. Start and finalize integration for Visual page
+
+Week 7 (10/30-11/5)
+    1. Research API required for Auditory learning type
+    2. Start and finalize front-end work for Auditory page
+
+Week 8 (11/6-11/12)
+    1. Handle requests for Auditory page
+    2. Start and finalize integration for Auditory page
+
+Week 9 (11/13-11/19)
+    1. Build and run tests
+    2. Making final UI changes
+
+Week 10 (11/27-12/3)
+    1. Finalize testing and deploy
+    2. Collect user feedback
