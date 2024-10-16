@@ -1,11 +1,11 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
+import globals from 'globals';
+import pluginJs from '@eslint/js';
 
 export default [
   {
-    files: ["**/*.js", "**/*.spec.js"],
+    files: ['**/*.js', '**/*.spec.js'],
     languageOptions: {
-      sourceType: "commonjs",
+      sourceType: 'commonjs',
     },
   },
   {
