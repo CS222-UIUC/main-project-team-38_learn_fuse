@@ -30,16 +30,19 @@ These instructions will help you set up the project on your local machine for de
 ## Installation
 
 1. Clone the repository:
+
    ```
    git clone https://github.com/CS222-UIUC/main-project-team-38_learn_fuse.git
    ```
 
 2. Navigate to the project directory:
+
    ```
    cd main-project-team-38_learn_fuse
    ```
 
 3. Install dependencies:
+
    ```
    npm install
    ```
@@ -57,10 +60,22 @@ We use Jest for unit testing. To run the tests:
 npm test
 ```
 
+For ESLint and Prettier checks:
+
+```
+npm run lint
+```
+
+For fixing ESLint and Prettier errors:
+
+```
+npm run fix
+```
+
 For test coverage reports:
 
 ```
-npm run test:coverage
+npx jest --coverage
 ```
 
 ## Team
@@ -71,4 +86,5 @@ npm run test:coverage
 - Prisha Thoguluva
 
 ## UI Mock-Up
+
 Link: https://www.figma.com/design/9AsQmZl78qlnc4LPMTLvFQ/Untitled?node-id=6-20&t=IiPnRXbqyk4PON9e-1
