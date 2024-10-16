@@ -69,7 +69,7 @@ npm run lint
 For fixing ESLint and Prettier errors:
 
 ```
-npm run fix 
+npm run fix
 ```
 
 For test coverage reports:
