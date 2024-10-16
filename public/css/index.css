@@ -43,6 +43,7 @@ a:hover {
   transition:
     background-color 0.3s ease,
     transform 0.3s ease;
+  margin-top: 20px;
 }
 
 button.cta-button {
@@ -53,6 +54,10 @@ button.cta-button {
   background-color: var(--primary-color);
   color: var(--white);
   transform: translateY(-3px);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 /* Header and Navigation */
@@ -240,18 +245,38 @@ nav ul li a.active::after {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1000px;
+  flex-wrap: wrap; 
+  max-width: 1200px; 
   margin: 0 auto;
+  gap: 2rem; 
 }
 
 .quiz-info {
   max-width: 50%;
+  flex: 1; 
 }
 
 .quiz-img {
   max-width: 40%;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  flex: 1; 
+}
+
+@media (max-width: 768px) {
+  .quiz-content {
+    flex-direction: column; 
+    text-align: center; 
+  }
+
+  .quiz-info,
+  .quiz-img {
+    max-width: 100%; 
+  }
+
+  .quiz-img {
+    margin-top: 2rem; 
+  }
 }
 
 /* Contact Section */
