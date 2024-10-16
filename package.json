@@ -1,17 +1,33 @@
 {
-    "name": "main-project-team-38_learn_fuse",
-    "version": "1.0.0",
-    "description": "��#\u0000 \u0000m\u0000a\u0000i\u0000n\u0000-\u0000p\u0000r\u0000o\u0000j\u0000e\u0000c\u0000t\u0000-\u0000l\u0000e\u0000a\u0000r\u0000n\u0000f\u0000u\u0000s\u0000e\u0000\r\u0000 \u0000",
-    "main": "index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "ejs": "^3.1.10",
-      "express": "^4.21.0",
-      "install": "^0.13.0"
-    }
+  "name": "main-project-team-38_learn_fuse",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000m\u0000a\u0000i\u0000n\u0000-\u0000p\u0000r\u0000o\u0000j\u0000e\u0000c\u0000t\u0000-\u0000l\u0000e\u0000a\u0000r\u0000n\u0000f\u0000u\u0000s\u0000e\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint . && prettier --check .",
+    "fix": "eslint . --fix && prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "install": "^0.13.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.12.0",
+    "eslint": "^9.12.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^28.8.3",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.1",
+    "globals": "^15.11.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.3.3",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript-eslint": "^8.9.0"
   }
+}
