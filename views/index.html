@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LearnFuse - Personalized Learning Experience</title>
+    <link rel="stylesheet" href="../public/css/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <img src="logo.png" alt="LearnFuse Logo" class="logo" />
+        <ul>
+          <li><a href="#" class="active">Home</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle">Learning Types</a>
+            <ul class="dropdown-content">
+              <li><a href="../visual-learning.html">Visual</a></li>
+              <li><a href="../auditory-learning.html">Auditory</a></li>
+              <li><a href="../kinesthetic-learning.html">Kinesthetic</a></li>
+              <li><a href="../scribble-learning.html">Scribble</a></li>
+            </ul>
+          </li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h1 class="title">LearnFuse</h1>
+          <p id="motto">Learn Your Way.</p>
+          <p class="about-text">
+            At LearnFuse, we transform traditional learning materials into
+            personalized experiences. Our platform adapts to your unique
+            learning style, whether you're a visual, auditory, kinesthetic
+            learner, or a note-taker.
+          </p>
+          <a href="#quiz" class="cta-button">Find Your Learning Type</a>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="feature">
+          <i class="fas fa-user-cog"></i>
+          <h3>Personalized Learning</h3>
+          <p>
+            Tailor educational content to your unique learning style, enhancing
+            engagement and retention
+          </p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-laptop-code"></i>
+          <h3>Adaptive Technology</h3>
+          <p>
+            Convert text into visual diagrams, audio files, interactive tools,
+            and note-taking spaces to suit your preferences
+          </p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-universal-access"></i>
+          <h3>Inclusive Education</h3>
+          <p>
+            Support all learners, including those with learning disabilities,
+            through diverse content formats
+          </p>
+        </div>
+      </section>
+
+      <section id="demo" class="demo-vid">
+        <h2>How Our App Works</h2>
+        <p>Experience the power of adaptive learning with LearnFuse</p>
+        <div class="video-container">
+          <img
+            src="placeholder-gif.gif"
+            alt="Demo of LearnFuse App"
+            class="demo-gif"
+          />
+        </div>
+      </section>
+
+      <section id="quiz" class="quiz">
+        <div class="quiz-content">
+          <div class="quiz-info">
+            <h2>Find Your Learning Type</h2>
+            <p>
+              Ready to discover which learning type suits you best? Take our
+              quick quiz and unlock your potential!
+            </p>
+            <a href="quiz.html" class="cta-button">Start Quiz</a>
+          </div>
+          <img
+            src="placeholder-quiz.jpg"
+            alt="Quiz Illustration"
+            class="quiz-img"
+          />
+        </div>
+      </section>
+
+      <section id="contact" class="contact-us">
+        <div class="contact-info">
+          <h2>Get in Touch</h2>
+          <p>Have questions or feedback? We'd love to hear from you!</p>
+          <p><strong>Email</strong><br />support@learnfuse.com</p>
+          <p><strong>Phone</strong><br />+1 (000) 123-4567</p>
+          <!-- <ul>
+                    <li><i class="fas fa-envelope"></i> support@learnfuse.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Learning Lane, Education City, ED 12345</li>
+                </ul> -->
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"
+              ><i class="fab fa-facebook"></i
+            ></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your Name"
+              required
+            />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Your Message"
+              required
+            ></textarea>
+            <button type="submit" class="cta-button">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2024 LearnFuse. All rights reserved. |
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+      </p>
+    </footer>
+  </body>
+</html>
