@@ -23,8 +23,8 @@ These instructions will help you set up the project on your local machine for de
 ### Tech Stack
 
 - Backend: Node.js
-- Frontend: React.js
-- Testing: Jest
+- Frontend: HTML, CSS, JavaScript
+- Testing: Jest, ESLint, Prettier
 - CI/CD: GitHub Actions
 
 ## Installation
