@@ -1,113 +1,117 @@
 body {
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
 }
 
 .container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    color: #333;
-    text-align: center;
-    font-size: 2.5em;
-    margin-bottom: 30px;
-    font-family: 'Courier New', monospace;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    border-bottom: 3px solid #333;
-    padding-bottom: 10px;
+  color: #333;
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border-bottom: 3px solid #333;
+  padding-bottom: 10px;
 }
 
 .section {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 .section-title {
-    font-size: 1.2em;
-    color: #444;
-    margin-bottom: 10px;
+  font-size: 1.2em;
+  color: #444;
+  margin-bottom: 10px;
 }
 
 .upload-section {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .file-upload {
-    border: 2px dashed #ccc;
-    padding: 20px;
-    text-align: center;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: border-color 0.3s ease;
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
 }
 
 .file-upload:hover {
-    border-color: #666;
+  border-color: #666;
 }
 
 .file-upload.dragover {
-    border-color: #666;
-    background-color: #f8f9fa;
+  border-color: #666;
+  background-color: #f8f9fa;
 }
 
 .output-box {
-    width: 100%;
-    min-height: 100px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: vertical;
-    margin-bottom: 20px;
-    background-color: #fff;
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  margin-bottom: 20px;
+  background-color: #fff;
 }
 
 .notes-editor {
-    width: 100%;
-    min-height: 200px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: vertical;
-    background-color: #fffef0;
+  width: 100%;
+  min-height: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  background-color: #fffef0;
 }
 
-button, .submit-btn, .save-btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+button,
+.submit-btn,
+.save-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-button:hover, .submit-btn:hover, .save-btn:hover {
-    background-color: #45a049;
+button:hover,
+.submit-btn:hover,
+.save-btn:hover {
+  background-color: #45a049;
 }
 
 .save-btn {
-    display: block;
-    margin: 20px auto 0;
+  display: block;
+  margin: 20px auto 0;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .file-upload:focus {
-    outline: none;
+  outline: none;
 }
 
 textarea {
-    max-width: 100%;
-    font-family: inherit;
+  max-width: 100%;
+  font-family: inherit;
 }
