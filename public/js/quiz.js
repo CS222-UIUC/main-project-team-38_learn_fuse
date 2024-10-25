@@ -1,5 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const toggleQuizBtn = document.getElementById('toggle-quiz');
   const quizForm = document.getElementById('learning-type-quiz');
+  toggleQuizBtn.onclick = function() {
+    if (quizForm.style.display === "none") {
+      quizForm.style.display = "block";
+      toggleQuizBtn.innerText = "Hide Quiz";
+      let resultsContainer = document.getElementById('quiz-results');
+      if (resultsContainer.style.display != "none") {
+        quizForm.reset();
+        resultsContainer.style.display = "none";
+      }
+    } else {
+      quizForm.style.display = "none";
+      toggleQuizBtn.innerText = "Start Quiz";
+    }
+  }
 
   const answerWeights = {
     q1: {
