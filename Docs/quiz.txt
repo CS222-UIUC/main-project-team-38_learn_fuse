@@ -1,0 +1,62 @@
+Key: A = Auditory, S = Scribble, V = Visual, K = Kinesthetic
+Q1: In a classroom setting, what do you prefer to do?
+a. Carefully listen to the instructor’s lecture, ensuring you take in everything they say A
+b. Take notes for each key topic/unit taught during a lecture or other activity S
+c. Skim through any textual aid about the lesson and/or look at the presentation slideshow V
+d. Partake in interactive activities and experiments and/or or think about ways you can physically test/confirm the validity of the claims you are learning K
+
+Q2: What kind of environment do you prefer studying in?
+a. A spacious place in which you can move around and/or assemble and move objects around  K
+b. A lab or library where you have access to charts and other relevant imagery V
+c. A space with minimal distractions so you can listen to relevant videos or speak out loud explaining materials to yourself or to others A
+d. A desk where you have lots of materials to take different kinds of notes, such as notebooks or sticky notes S
+
+Q3: What is your preferred method of studying before an exam?
+a. Reading through your textbook and making sure you have detailed notes on each topic or writing down as much as you know about the topic and reviewing it S
+b. Looking at or creating a mind-map that presents the information in a way in which you can see how each component/topic relates to another V
+c. Reviewing recordings of the video being explained or asking others to explain it to you A
+d. Reviewing the outcomes of experiments or demonstrations or using props to re-do them K
+
+Q4: When given a list of instructors or directions to follow, how do you approach them?
+a. Find out the end-goal of the task and then figure things out as you go along the process through trial and error K
+b. Take notes of key things to remember and use them to complete the task S
+c. Look at or create diagrams about the process to build or execute whatever is outlined to guide you through the task V
+d. Have the instructions to be read out-loud to you as you work A
+
+Q5: What role do you prefer to have in group projects?
+a. Leading discussion by talking through each task and keeping the team focused A
+b. Demonstrating ideas through physical examples or creating prototypes of the envisioned final product K
+c. Organizing key information and designing a work pipeline V
+d. Taking notes on what the group’s ideas are and key information to remember S
+
+Q6: What is your preferred method of memorizing information?
+a. Summarizing the material and re-writing key points S
+b. Creating visual aid like flashcards, diagrams, charts, and other methods of organizing data V
+c. Reading the information out-loud to yourself repeatedly, creating a chant or method of relaying the data that sticks with you A
+d. Reinforcing material by physically testing out your solutions again K
+
+Q7: What is your method of problem-solving?
+a. Mapping out the problem to see all its components connected from a birds-eye view V
+b. Writing out each step of the problem and the details for each step S
+c. Testing your plans with solutions you come up with, and refining your approach based on your outcomes K
+d. Talking through your ideas with others and/or watching videos of people explaining how to approach similar issues A
+
+Q8: How would you prefer learning to cook a new dish using a recipe?
+a. Approximating ingredients and steps through previous experience and learning on the go K
+b. Writing down key points of the recipe in your own words S
+c. Looking at pictures of what the finished dish looks like to help you plan out the process V
+d. Listening to someone explain the recipe to you step by step A
+
+Q9: How do you process your emotions and thoughts when you are feeling overwhelmed?
+a. Visualizing the problem in your mind or drawing it out, showing how one problem or incident relates to another V
+b. Writing in a journal to work through your feelings S
+c. Talking out your feelings with a friend or family member A
+d. Partaking in physical activities and hobbies to distract yourself K
+
+Q10: What motivates you through the process of learning something new?
+a. Being able to visualize the finished product and all parts of it working as they are intended to do so V
+b. Tracking down your progress by writing down milestones S
+c. Physically seeing improvement via practice or results K
+d. Receiving verbal encouragement or advice from others A
+
+
