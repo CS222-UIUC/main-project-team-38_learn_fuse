@@ -18,8 +18,11 @@
   <body>
     <header>
       <nav>
-        <img src="../public/images/logo.png" alt="LearnFuse Logo" class="logo" />
-
+        <img
+          src="../public/images/logo.png"
+          alt="LearnFuse Logo"
+          class="logo"
+        />
         <ul>
           <li><a href="#" class="active">Home</a></li>
           <li class="dropdown">
@@ -100,7 +103,8 @@
             </p>
             <!-- <a href="quiz.html" class="cta-button">Start Quiz</a> -->
             <!--form-->
-            <form id="learning-type-quiz">
+            <button id="toggle-quiz" class="cta-button">Start Quiz</button>
+            <form id="learning-type-quiz" style="display: none">
               <!-- Question 1 -->
               <div class="quiz-question">
                 <p>1. In a classroom setting, what do you prefer to do?</p>
@@ -185,7 +189,7 @@
               <!-- Question 4 -->
               <div class="quiz-question">
                 <p>
-                  4. When given a list of instructors or directions to follow,
+                  4. When given a list of instructions or directions to follow,
                   how do you approach them?
                 </p>
                 <label

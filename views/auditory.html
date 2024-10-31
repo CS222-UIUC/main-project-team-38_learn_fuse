@@ -3,7 +3,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title></title>
-  <link rel="stylesheet" href="../public/css/visual.css" />
+  <link rel="stylesheet" href="../public/css/auditory.css" />
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap"
     rel="stylesheet"
@@ -19,9 +19,9 @@
     <nav>
       <img src="logo.png" alt="LearnFuse Logo" class="logo" />
       <ul>
-        <li><a href="./index.html">Home</a></li>
+        <li><a href="./index.html" class="active">Home</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle active">Visual</a>
+          <a class="dropdown-toggle">Auditory</a>
           <ul class="dropdown-content">
             <li><a href="./visual.html">Visual</a></li>
             <li><a href="./auditory.html">Auditory</a></li>
@@ -37,34 +37,33 @@
   <main>
     <section class="hero">
       <div class="hero-content">
-        <h1 class="title">Visual</h1>
+        <h1 class="title">Auditory</h1>
       </div>
     </section>
 
     <section class="auditory-section">
       <div class="auditory-container">
         <div class="input-box">
-          <p><b>What is the visual learning style?</b></p>
-          <p>
-            Visual learners are learners who retain information best by reading
-            text or using tools like mind maps and diagrams. <br />
-            Upload your text file below to receive your diagram!
-          </p>
+          <p><b>What is the auditory learning style?</b></p>
+          <p>Enter text here.</p>
         </div>
 
         <div class="input-box">
-            <input type="file" id="file-upload" style="display:none;" />
-
-          <button class="button-style" onclick="document.getElementById('file-upload').click();">Click to Upload File</button>
-          <button class="button-style" onclick="handleSubmit()">Submit</button>
+          <button class="button-style">Click to Upload File</button>
+          <button class="button-style">Submit</button>
         </div>
+      </div>
+    </section>
+
+    <section class="auditory-output">
+      <div class="output-box">
+        <button class="button-style">Click to Download Audio File</button>
       </div>
     </section>
 
     <section class="auditory-recommendations">
       <div class="recommendation-box">
-        <p><b>Diagram Output</b></p>
-        <p id="output-text">Upload a file and click submit to see your diagram.</p>
+        <p><b>YouTube Recommendations</b></p>
       </div>
     </section>
 
@@ -117,9 +116,4 @@
       <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
     </p>
   </footer>
-  <script>
-    function handleSubmit() {
-        document.getElementById('output-text').textContent='Diagram loading...';
-    }
-  </script>
 </body>

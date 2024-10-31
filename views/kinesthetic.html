@@ -3,7 +3,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title></title>
-  <link rel="stylesheet" href="../public/css/visual.css" />
+  <link rel="stylesheet" href="../public/css/kinesthetic.css" />
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap"
     rel="stylesheet"
@@ -17,11 +17,11 @@
 <body>
   <header>
     <nav>
-      <img src="logo.png" alt="LearnFuse Logo" class="logo" />
+      <img src="../public/images/logo.png" alt="LearnFuse Logo" class="logo" />
       <ul>
         <li><a href="./index.html">Home</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle active">Visual</a>
+          <a class="dropdown-toggle active">Kinesthetic</a>
           <ul class="dropdown-content">
             <li><a href="./visual.html">Visual</a></li>
             <li><a href="./auditory.html">Auditory</a></li>
@@ -37,34 +37,41 @@
   <main>
     <section class="hero">
       <div class="hero-content">
-        <h1 class="title">Visual</h1>
+        <h1 class="title">Kinesthetic</h1>
       </div>
     </section>
 
     <section class="auditory-section">
       <div class="auditory-container">
         <div class="input-box">
-          <p><b>What is the visual learning style?</b></p>
+          <p><b>What is the kinesthetic learning style?</b></p>
           <p>
-            Visual learners are learners who retain information best by reading
-            text or using tools like mind maps and diagrams. <br />
-            Upload your text file below to receive your diagram!
+            The kinesthetic learning style is a mode of learning where
+            individuals prefer to engage n hands-on, physical activites to
+            better understand and retain information.
           </p>
         </div>
 
         <div class="input-box">
-            <input type="file" id="file-upload" style="display:none;" />
-
-          <button class="button-style" onclick="document.getElementById('file-upload').click();">Click to Upload File</button>
-          <button class="button-style" onclick="handleSubmit()">Submit</button>
+          <input
+            type="file"
+            id="fileInput"
+            accept=".txt"
+            style="display: none"
+          />
+          <button class="button-style" id="uploadButton">
+            Click to Upload File
+          </button>
+          <button class="button-style" id="submitButton" disabled>
+            Submit
+          </button>
         </div>
       </div>
     </section>
 
     <section class="auditory-recommendations">
-      <div class="recommendation-box">
-        <p><b>Diagram Output</b></p>
-        <p id="output-text">Upload a file and click submit to see your diagram.</p>
+      <div class="recommendation-box" id="recommendationBox">
+        <p><b>Activity Recommendations & YouTube Videos</b></p>
       </div>
     </section>
 
@@ -72,7 +79,7 @@
       <div class="contact-info">
         <h2>Get in Touch</h2>
         <p>Have questions or feedback? We'd love to hear from you!</p>
-        <p><strong>Email</strong><br />support@learnfuse.com</p>
+        <p><strong>Email</strong><br />learnfuse.at@gmail.com</p>
         <p><strong>Phone</strong><br />+1 (000) 123-4567</p>
         <div class="social-links">
           <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
@@ -83,7 +90,7 @@
           <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
         </div>
       </div>
-      <div class="contact-form">
+      <div class="contact-form" id="contact-form">
         <form>
           <input
             type="text"
@@ -105,7 +112,9 @@
             placeholder="Your Message"
             required
           ></textarea>
-          <button type="submit" class="cta-button">Send Message</button>
+          <button id="contact-btn" type="submit" class="cta-button">
+            Send Message
+          </button>
         </form>
       </div>
     </section>
@@ -117,9 +126,7 @@
       <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
     </p>
   </footer>
-  <script>
-    function handleSubmit() {
-        document.getElementById('output-text').textContent='Diagram loading...';
-    }
-  </script>
+
+  <script src="../public/js/kinesthetic.js"></script>
+  <script src="../public/js/contact.js"></script>
 </body>
