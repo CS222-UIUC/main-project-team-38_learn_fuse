@@ -5,5 +5,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - '3000:3000'
+    env_file: 
+      - .env
     environment:
-      NODE_ENV: development # change to production later
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - NODE_ENV=development # change to production later

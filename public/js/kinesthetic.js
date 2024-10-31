@@ -48,6 +48,8 @@ submitButton.addEventListener('click', async () => {
 
     const data = await response.json();
 
+    console.log(data);
+
     // Check if 'choices' exists and has at least one element
     if (!data.choices || data.choices.length === 0) {
       recommendationBox.innerHTML = `<p>Sorry, no recommendations available. Check back later.</p>`;
