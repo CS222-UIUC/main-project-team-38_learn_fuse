@@ -53,10 +53,10 @@
         </div>
 
         <div class="input-box">
-            <input type="file" id="file-upload" style="display:none;" />
+            <input type="file" id="fileInput" accept=".txt" style="display:none;" />
 
-          <button class="button-style" onclick="document.getElementById('file-upload').click();">Click to Upload File</button>
-          <button class="button-style" onclick="handleSubmit()">Submit</button>
+          <button class="button-style" id="uploadButton">Click to Upload File</button>
+          <button class="button-style" id="submitButton" disabled>Submit</button>
         </div>
       </div>
     </section>
@@ -117,9 +117,6 @@
       <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
     </p>
   </footer>
-  <script>
-    function handleSubmit() {
-        document.getElementById('output-text').textContent='Diagram loading...';
-    }
-  </script>
+  <script src="visual.js"></script>
+  
 </body>

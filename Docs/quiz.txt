@@ -17,11 +17,7 @@ b. Looking at or creating a mind-map that presents the information in a way in w
 c. Reviewing recordings of the video being explained or asking others to explain it to you A
 d. Reviewing the outcomes of experiments or demonstrations or using props to re-do them K
 
-<<<<<<< HEAD
 Q4: When given a list of instructors or directions to follow, how do you approach them?
-=======
-Q4: When given a list of instructions or directions to follow, how do you approach them?
->>>>>>> 651b1c0fc0926ba332046352c96df5ffc8defd8f
 a. Find out the end-goal of the task and then figure things out as you go along the process through trial and error K
 b. Take notes of key things to remember and use them to complete the task S
 c. Look at or create diagrams about the process to build or execute whatever is outlined to guide you through the task V
@@ -61,10 +57,4 @@ Q10: What motivates you through the process of learning something new?
 a. Being able to visualize the finished product and all parts of it working as they are intended to do so V
 b. Tracking down your progress by writing down milestones S
 c. Physically seeing improvement via practice or results K
-<<<<<<< HEAD
 d. Receiving verbal encouragement or advice from others A
-=======
-d. Receiving verbal encouragement or advice from others A
-
-
->>>>>>> 651b1c0fc0926ba332046352c96df5ffc8defd8f
