@@ -18,6 +18,12 @@ app.use('/public', express.static(__dirname + '/public'));
 const contactRoutes = require('./routes/contact');
 app.use('/api', contactRoutes);
 
+const contactRoutes = require('./routes/contact');
+app.use('/api/contact', contactRoutes);
+
+const kinestheticRoutes = require('./routes/kinesthetic');
+app.use('/api/kinesthetic', kinestheticRoutes);
+
 app.get('/', function (request, response) {
   // response.send("testing");
   response.sendFile(__dirname + '/views/index.html');
