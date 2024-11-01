@@ -16,9 +16,6 @@ app.use(express.static(__dirname + '/views'));
 app.use('/public', express.static(__dirname + '/public'));
 
 const contactRoutes = require('./routes/contact');
-app.use('/api', contactRoutes);
-
-const contactRoutes = require('./routes/contact');
 app.use('/api/contact', contactRoutes);
 
 const kinestheticRoutes = require('./routes/kinesthetic');
