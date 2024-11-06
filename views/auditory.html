@@ -17,11 +17,11 @@
 <body>
   <header>
     <nav>
-      <img src="logo.png" alt="LearnFuse Logo" class="logo" />
+      <img src="../public/images/logo.png" alt="LearnFuse Logo" class="logo" />
       <ul>
-        <li><a href="./index.html" class="active">Home</a></li>
+        <li><a href="./index.html">Home</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle">Auditory</a>
+          <a class="dropdown-toggle active">Auditory</a>
           <ul class="dropdown-content">
             <li><a href="./visual.html">Visual</a></li>
             <li><a href="./auditory.html">Auditory</a></li>
@@ -49,20 +49,22 @@
         </div>
 
         <div class="input-box">
-          <button class="button-style">Click to Upload File</button>
-          <button class="button-style">Submit</button>
+          <input type="file" id="fileInput" accept=".txt" style="display: none" />
+          <button class="button-style" id="uploadButton">Click to Upload File</button>
+          <p class="uploadStatus" id="uploadStatus"></p>
+          <button class="button-style"  id="submitButton">Submit</button>
         </div>
       </div>
     </section>
 
     <section class="auditory-output">
       <div class="output-box">
-        <button class="button-style">Click to Download Audio File</button>
+        <button class="button-style" id="auditoryFileOutput">Click to Download Audio File</button>
       </div>
     </section>
 
     <section class="auditory-recommendations">
-      <div class="recommendation-box">
+      <div class="recommendation-box" id="recommendationBox">
         <p><b>YouTube Recommendations</b></p>
       </div>
     </section>
@@ -104,7 +106,7 @@
             placeholder="Your Message"
             required
           ></textarea>
-          <button type="submit" class="cta-button">Send Message</button>
+          <button  id="contact-btn" type="submit" class="cta-button">Send Message</button>
         </form>
       </div>
     </section>
@@ -116,4 +118,7 @@
       <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
     </p>
   </footer>
+
+  <script src="../public/js/auditory.js"></script>
+  <script src="../public/js/contact.js"></script>
 </body>

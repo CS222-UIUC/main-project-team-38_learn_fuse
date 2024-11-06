@@ -21,6 +21,9 @@ app.use('/api/contact', contactRoutes);
 const kinestheticRoutes = require('./routes/kinesthetic');
 app.use('/api/kinesthetic', kinestheticRoutes);
 
+const auditoryRoutes = require('./routes/text-to-speech');
+app.use('/api/text-to-speech', auditoryRoutes); 
+
 app.get('/', function (request, response) {
   // response.send("testing");
   response.sendFile(__dirname + '/views/index.html');
