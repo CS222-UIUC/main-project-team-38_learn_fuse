@@ -5,7 +5,6 @@ const multer = require('multer');
 const fs = require('fs');
 const upload = multer({ dest: 'uploads/' });
 
-
 const app = express();
 
 app.use(bodyParser.json());
@@ -22,7 +21,7 @@ const kinestheticRoutes = require('./routes/kinesthetic');
 app.use('/api/kinesthetic', kinestheticRoutes);
 
 const auditoryRoutes = require('./routes/text-to-speech');
-app.use('/api/text-to-speech', auditoryRoutes); 
+app.use('/api/text-to-speech', auditoryRoutes);
 
 app.get('/', function (request, response) {
   // response.send("testing");
@@ -39,7 +38,7 @@ app.post('/upload', upload.single('file'), function (request, response) {
     return response.status(400).json({ error: 'No file uploaded' });
   }
 
-  fs.readFile(request.file.path, 'utf-8',(err, data) => {
+  fs.readFile(request.file.path, 'utf-8', (err, data) => {
     if (err) {
       console.error('Error reading file:', err);
       return response.status(500).json({ error: 'Error reading file' });
