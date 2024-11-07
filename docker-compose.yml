@@ -5,10 +5,15 @@ services:
       dockerfile: Dockerfile
     ports:
       - '3000:3000'
-    env_file: 
+    env_file:
       - .env
     environment:
       - EMAIL_USER=${EMAIL_USER}
       - EMAIL_PASS=${EMAIL_PASS}
       - GROQ_API_KEY=${GROQ_API_KEY}
       - NODE_ENV=development # change to production later
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npx nodemon app.js
+
