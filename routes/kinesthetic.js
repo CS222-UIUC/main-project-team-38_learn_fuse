@@ -48,10 +48,10 @@ router.post('/', async (req, res) => {
     
     Format each activity as:
     GROQ-API-SUGG Activity X: [Name]
-    - Steps: [numbered steps]
-    - Connection: [brief explanation]
-    - Materials: [simple list]
-    - Time: [duration]`;
+    - STEPS: [numbered steps]
+    - CONNECTION: [brief explanation]
+    - MATERIALS: [simple list]
+    - TIME: [duration]`;
     const completion = await groq.chat.completions.create({
       messages: [
         {

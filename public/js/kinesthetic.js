@@ -10,18 +10,20 @@ let fileContent = '';
 let fileType = '';
 
 function displayActivities(activities, currentIndex = 0) {
+  const activity = activities[currentIndex];
   return `
+    <h2>Personalized Learning Activities</h2>
     <div class="carousel-container">
-      <button class="carousel-arrow prev" ${currentIndex === 0 ? 'disabled' : ''}>←</button>
+      <button class="carousel-arrow prev" ${currentIndex === 0 ? 'disabled' : ''} aria-label="Previous slide">←</button>
       
       <div class="activity-card">
-        <h3>${activities[currentIndex].title}</h3>
+        <h3>${activity.title}</h3>
         <div class="activity-details">
-          ${activities[currentIndex].details.map((line) => `<p>${line}</p>`).join('')}
+          ${activity.details.map((line) => `<p>${line}</p>`).join('')}
         </div>
       </div>
       
-      <button class="carousel-arrow next" ${currentIndex === activities.length - 1 ? 'disabled' : ''}>→</button>
+      <button class="carousel-arrow next" ${currentIndex === activities.length - 1 ? 'disabled' : ''} aria-label="Next slide">→</button>
       
       <div class="carousel-indicators">
         ${activities.length} slides - Showing ${currentIndex + 1} of ${activities.length}
@@ -38,8 +40,7 @@ function setupCarousel(activities, currentIndex) {
     console.log(currentIndex);
     if (currentIndex > 0) {
       currentIndex--;
-      recommendationBox.querySelector('.carousel-container').innerHTML =
-        displayActivities(activities, currentIndex);
+      recommendationBox.innerHTML = displayActivities(activities, currentIndex);
       setupCarousel(activities, currentIndex);
     }
   });
@@ -48,8 +49,7 @@ function setupCarousel(activities, currentIndex) {
     console.log(currentIndex);
     if (currentIndex < activities.length - 1) {
       currentIndex++;
-      recommendationBox.querySelector('.carousel-container').innerHTML =
-        displayActivities(activities, currentIndex);
+      recommendationBox.innerHTML = displayActivities(activities, currentIndex);
       setupCarousel(activities, currentIndex);
     }
   });
@@ -139,7 +139,6 @@ submitButton.addEventListener('click', async () => {
 
     recommendationBox.innerHTML = `
       <div class="recommendations-container">
-        <h2>Personalized Learning Activities</h2>
         ${displayActivities(activities, 0)}
       </div>
     `;
