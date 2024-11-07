@@ -158,5 +158,19 @@ submitButton.addEventListener('click', async () => {
         </div>
       `;
     }
+    console.error('Error:', error);
+    if (error.message == '413') {
+      recommendationBox.innerHTML = `
+      <div class="error-message">
+        <p>The file is too large. Please try uploading a smaller file.</p>
+      </div>
+    `;
+    } else {
+      recommendationBox.innerHTML = `
+        <div class="error-message">
+          <p>Sorry, we couldn't generate recommendations at this time. Please try again later.</p>
+        </div>
+      `;
+    }
   }
 });
