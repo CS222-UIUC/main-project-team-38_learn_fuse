@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const outputText = document.getElementById('output-text');
 
   uploadButton.addEventListener('click', function () {
-    fileInput.click(); 
+    fileInput.click();
   });
 
   fileInput.addEventListener('change', function () {
