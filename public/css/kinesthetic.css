@@ -218,10 +218,10 @@ nav ul li a.active::after {
 .button-style {
   margin-top: 1rem;
   padding: 0.5rem 1.5rem;
-  background-color: #666; /* Grey background for the button */
-  color: white; /* White text color */
+  background-color: #666;
+  color: white;
   border: none;
-  border-radius: 4px; /* Rounded button corners */
+  border-radius: 4px;
   cursor: pointer;
   transition:
     box-shadow 0.3s ease,
@@ -229,9 +229,160 @@ nav ul li a.active::after {
 }
 
 .button-style:hover {
-  background-color: #555; /* Darker grey when hovered */
+  background-color: #555;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
+}
+
+.note {
+  font-size: small;
+  color: #333;
+}
+
+.file-status {
+  margin: 10px 0;
+  min-height: 16px;
+  max-width: 100%;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: #f0f9ff;
+  border-radius: 6px;
+  border: 1px solid #93c5fd;
+}
+
+.success-check {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+.carousel-container {
+  position: sticky;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Activity Card Styles */
+.activity-card {
+  padding: 1.5rem;
+  min-height: 300px;
+  text-align: left;
+}
+
+.activity-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.activity-details {
+  font-family: 'Poppins', sans-serif;
+}
+
+.activity-details p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: #4a5568;
+}
+
+/* Carousel Navigation */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4a5568;
+}
+
+.carousel-arrow:hover:not(:disabled) {
+  background-color: #f7fafc;
+  color: #2d3748;
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.carousel-arrow.prev {
+  left: -20px;
+}
+
+.carousel-arrow.next {
+  right: -20px;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  color: #718096;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .carousel-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .carousel-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .carousel-arrow.prev {
+    left: -16px;
+  }
+
+  .carousel-arrow.next {
+    right: -16px;
+  }
+
+  .activity-card h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Animation for slide transitions */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.activity-card {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Focus styles for accessibility */
+.carousel-arrow:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
 }
 
 /* Auditory Output Section*/
@@ -267,9 +418,9 @@ nav ul li a.active::after {
 
 .recommendation-box {
   background-color: #d3d3d3;
-  padding: 10rem;
+  padding: 4rem;
   text-align: center;
-  width: 300px;
+  width: 65%;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }

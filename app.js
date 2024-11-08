@@ -4,7 +4,7 @@ require('dotenv').config();
 const multer = require('multer');
 const fs = require('fs');
 const upload = multer({ dest: 'uploads/' });
-
+const Groq = require('groq-sdk');
 
 const app = express();
 
@@ -21,6 +21,9 @@ app.use('/api/contact', contactRoutes);
 const kinestheticRoutes = require('./routes/kinesthetic');
 app.use('/api/kinesthetic', kinestheticRoutes);
 
+const auditoryRoutes = require('./routes/text-to-speech');
+app.use('/api/text-to-speech', auditoryRoutes);
+
 app.get('/', function (request, response) {
   // response.send("testing");
   response.sendFile(__dirname + '/views/index.html');
@@ -31,12 +34,12 @@ app.get('/scribble', function (request, response) {
   response.sendFile(__dirname + '/views/scribble.html');
 });
 
-app.post('/upload', upload.single('file'), function (request, response) {
+app.post('/upload', upload.single('file'), async function (request, response) {
   if (!request.file) {
     return response.status(400).json({ error: 'No file uploaded' });
   }
 
-  fs.readFile(request.file.path, 'utf-8',(err, data) => {
+  fs.readFile(request.file.path, 'utf-8', async (err, data) => {
     if (err) {
       console.error('Error reading file:', err);
       return response.status(500).json({ error: 'Error reading file' });
@@ -47,8 +50,18 @@ app.post('/upload', upload.single('file'), function (request, response) {
         console.error('Error deleting temporary file:', unlinkErr);
       }
     });
-
-    response.json({ content: data });
+    const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+    const groqApiResponse = await groq.chat.completions.create({
+      messages: [
+        {
+          role: 'user',
+          content: 'Provide key points for the following : ' + data,
+        },
+      ],
+      model: 'llama3-8b-8192',
+    });
+    const content = groqApiResponse.choices[0].message.content;
+    response.json({ content: content });
   });
 });
 
