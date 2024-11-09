@@ -18,7 +18,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
+      gap: 50px;
     }
 
     .top-row {
@@ -27,20 +27,35 @@
       gap: 10px; 
       width: 100%;
     }
-
     .input-box, .output-box {
-      width: 20%; 
-      height: 300px; 
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      font-size: 18px; 
-    }
+    width: 60%; /* Adjust if you want a wider container */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    font-size: 18px;
+}
+
+.output-box textarea,
+.output-box input,
+.output-box div,
+.output-box pre, 
+.output-box p {
+    width: 100%; 
+    height: 300px; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    resize: none;
+    box-sizing: border-box; 
+    overflow-y: auto;
+}
+
 
     .input-box p, .output-box p {
       margin: 0;
@@ -77,7 +92,7 @@
       background-color: #4a4a4a; 
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 10px;
       cursor: pointer;
       font-size: 16px; 
       align-self: center;
@@ -119,25 +134,27 @@
 
     <section class="auditory-section">
       <div class="auditory-container">
-       
         <div class="top-row">
           <div class="input-box">
             <p>Choose File</p>
-            <input type="file" />
-            <button class="button-style">Submit File</button>
+            <form id="uploadForm" class="file-upload">
+              <input type="file" id="fileInput" />
+              <div id="fileInfo"></div>
+              <button type="submit" class="button-style">Submit File</button>
+            </form>
           </div>
           
           <div class="output-box">
             <p>Output</p>
-            <button class="button-style">Show Output</button>
+            <textarea id="outputBox" readonly></textarea>
+            <button class="button-style" onclick="document.getElementById('outputBox').value = ''">Clear Output</button>
           </div>
         </div>
 
-     
         <div class="notes-editor">
           <p><b>Notes Editor</b></p>
-          <textarea placeholder="Start typing your notes here..."></textarea>
-          <button class="button-style">Save Notes</button>
+          <textarea id="notesArea" placeholder="Start typing your notes here..."></textarea>
+          <button class="button-style" onclick="saveNotes()">Save Notes</button>
         </div>
       </div>
     </section>
@@ -172,5 +189,82 @@
       <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
     </p>
   </footer>
+
+  <script>
+    function saveNotes() {
+      const notes = document.getElementById('notesArea').value;
+      if (notes.trim()) {
+        alert('Notes saved!');
+        // Here you can add actual save functionality
+      } else {
+        alert('Please enter some notes before saving.');
+      }
+    }
+
+    function updateFileInfo(file) {
+      const fileInfo = document.getElementById('fileInfo');
+      if (file) {
+        const fileSize = (file.size / 1024).toFixed(2);
+        fileInfo.innerHTML = `Selected: ${file.name} (${fileSize} KB)`;
+        fileInfo.style.display = 'block';
+      } else {
+        fileInfo.innerHTML = '';
+        fileInfo.style.display = 'none';
+      }
+    }
+
+    document.getElementById('fileInput').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      updateFileInfo(file);
+    });
+
+    document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const file = document.getElementById('fileInput').files[0];
+      if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        try {
+          const response = await fetch('/upload', {
+            method: 'POST',
+            body: formData,
+          });
+          if (!response.ok) {
+            throw new Error('Upload failed');
+          }
+          const data = await response.json();
+          document.getElementById('outputBox').value = data.content;
+        } catch (error) {
+          console.error('Error:', error);
+          alert('Error uploading file');
+        }
+      } else {
+        alert('Please select a file first.');
+      }
+    });
+
+    // Handle drag and drop
+    const dropZone = document.querySelector('.file-upload');
+    
+    dropZone.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      this.classList.add('dragover');
+    });
+
+    dropZone.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      this.classList.remove('dragover');
+    });
+
+    dropZone.addEventListener('drop', function(e) {
+      e.preventDefault();
+      this.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file) {
+        document.getElementById('fileInput').files = e.dataTransfer.files;
+        updateFileInfo(file);
+      }
+    });
+  </script>
 </body>
 </html>
