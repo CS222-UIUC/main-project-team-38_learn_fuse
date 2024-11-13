@@ -1,123 +1,270 @@
-<!doctype html>
-<html>
-  <head>
-    <link rel="stylesheet" href="public/css/scribble.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>Scribble</h1>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scribble</title>
+  <link rel="stylesheet" href="../public/css/auditory.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+  <style>
+   
+    .auditory-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+    }
 
-      <div class="section">
-        <div class="section-title">Upload File</div>
-        <form id="uploadForm" class="upload-section">
-          <div
-            class="file-upload"
-            onclick="document.getElementById('fileInput').click()"
-          >
-            <input type="file" id="fileInput" style="display: none" />
-            <p>Click or drag files here to upload</p>
-            <div id="fileInfo" class="file-info"></div>
+    .top-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px; 
+      width: 100%;
+    }
+    .input-box, .output-box {
+    width: 60%; /* Adjust if you want a wider container */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    font-size: 18px;
+}
+
+.output-box textarea,
+.output-box input,
+.output-box div,
+.output-box pre, 
+.output-box p {
+    width: 100%; 
+    height: 300px; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    resize: none;
+    box-sizing: border-box; 
+    overflow-y: auto;
+}
+
+
+    .input-box p, .output-box p {
+      margin: 0;
+      padding: 0;
+      font-weight: bold;
+      position: absolute;
+      top: 10px; 
+      font-size: 18px; 
+    }
+
+    .notes-editor {
+      width: 100%;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      font-size: 18px; 
+    }
+
+    .notes-editor textarea {
+      width: 100%;
+      height: 200px;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      resize: none;
+      font-size: 16px;
+    }
+
+    .button-style {
+      margin-top: auto;
+      padding: 10px 20px;
+      background-color: #4a4a4a; 
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px; 
+      align-self: center;
+      margin-top: 130px; 
+    }
+
+    .button-style:hover {
+      background-color: #333333; 
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <img src="logo.png" alt="LearnFuse Logo" class="logo" />
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle">Scribble</a>
+          <ul class="dropdown-content">
+            <li><a href="./visual.html">Visual</a></li>
+            <li><a href="./auditory.html">Auditory</a></li>
+            <li><a href="./kinesthetic.html">Kinesthetic</a></li>
+            <li><a href="./scribble.html" class="active">Scribble</a></li>
+          </ul>
+        </li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="title">Scribble</h1>
+      </div>
+    </section>
+
+    <section class="auditory-section">
+      <div class="auditory-container">
+        <div class="top-row">
+          <div class="input-box">
+            <p>Choose File</p>
+            <form id="uploadForm" class="file-upload">
+              <input type="file" id="fileInput" />
+              <div id="fileInfo"></div>
+              <button type="submit" class="button-style">Submit File</button>
+            </form>
           </div>
-          <button type="submit" class="submit-btn">Upload File</button>
+          
+          <div class="output-box">
+            <p>Output</p>
+            <textarea id="outputBox" readonly></textarea>
+            <button class="button-style" onclick="document.getElementById('outputBox').value = ''">Clear Output</button>
+          </div>
+        </div>
+
+        <div class="notes-editor">
+          <p><b>Notes Editor</b></p>
+          <textarea id="notesArea" placeholder="Start typing your notes here..."></textarea>
+          <button class="button-style" onclick="saveNotes()">Save Notes</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-us">
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <p>Have questions or feedback? We'd love to hear from you!</p>
+        <p><strong>Email</strong><br />support@learnfuse.com</p>
+        <p><strong>Phone</strong><br />+1 (000) 123-4567</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form>
+          <input type="text" id="name" name="name" placeholder="Your Name" required />
+          <input type="email" id="email" name="email" placeholder="Your Email" required />
+          <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+          <button type="submit" class="cta-button">Send Message</button>
         </form>
       </div>
+    </section>
+  </main>
 
-      <div class="section">
-        <div class="section-title">Output</div>
-        <textarea
-          id="outputBox"
-          class="output-box"
-          placeholder="Output will appear here..."
-          readonly
-        ></textarea>
-      </div>
+  <footer>
+    <p>
+      &copy; 2024 LearnFuse. All rights reserved. |
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </p>
+  </footer>
 
-      <div class="section">
-        <div class="section-title">Notes Editor</div>
-        <textarea
-          class="notes-editor"
-          placeholder="Start typing your notes here..."
-        ></textarea>
-      </div>
-
-      <button class="save-btn" onclick="saveNotes()">Save Notes</button>
-    </div>
-
-    <script>
-      function saveNotes() {
+  <script>
+    function saveNotes() {
+      const notes = document.getElementById('notesArea').value;
+      if (notes.trim()) {
         alert('Notes saved!');
+        // Here you can add actual save functionality
+      } else {
+        alert('Please enter some notes before saving.');
       }
+    }
 
-      function updateFileInfo(file) {
-        const fileInfo = document.getElementById('fileInfo');
-        if (file) {
-          const fileSize = (file.size / 1024).toFixed(2);
-          fileInfo.innerHTML = `Selected: ${file.name} (${fileSize} KB)`;
-          fileInfo.style.display = 'block';
-        } else {
-          fileInfo.innerHTML = '';
-          fileInfo.style.display = 'none';
-        }
+    function updateFileInfo(file) {
+      const fileInfo = document.getElementById('fileInfo');
+      if (file) {
+        const fileSize = (file.size / 1024).toFixed(2);
+        fileInfo.innerHTML = `Selected: ${file.name} (${fileSize} KB)`;
+        fileInfo.style.display = 'block';
+      } else {
+        fileInfo.innerHTML = '';
+        fileInfo.style.display = 'none';
       }
+    }
 
-      document
-        .getElementById('fileInput')
-        .addEventListener('change', function (e) {
-          const file = e.target.files[0];
-          updateFileInfo(file);
-        });
+    document.getElementById('fileInput').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      updateFileInfo(file);
+    });
 
-      // Modified form submission handler
-      document
-        .getElementById('uploadForm')
-        .addEventListener('submit', async function (e) {
-          e.preventDefault();
-          const file = document.getElementById('fileInput').files[0];
-          if (file) {
-            const formData = new FormData();
-            formData.append('file', file);
-
-            try {
-              const response = await fetch('/upload', {
-                method: 'POST',
-                body: formData,
-              });
-
-              if (!response.ok) {
-                throw new Error('Upload failed');
-              }
-
-              const data = await response.json();
-              document.getElementById('outputBox').value = data.content;
-            } catch (error) {
-              console.error('Error:', error);
-              alert('Error uploading file');
-            }
+    document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const file = document.getElementById('fileInput').files[0];
+      if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        try {
+          const response = await fetch('/upload', {
+            method: 'POST',
+            body: formData,
+          });
+          if (!response.ok) {
+            throw new Error('Upload failed');
           }
-        });
-
-      // Handle drag and drop
-      const dropZone = document.querySelector('.file-upload');
-
-      dropZone.addEventListener('dragover', function (e) {
-        e.preventDefault();
-        this.classList.add('dragover');
-      });
-
-      dropZone.addEventListener('dragleave', function (e) {
-        e.preventDefault();
-        this.classList.remove('dragover');
-      });
-
-      dropZone.addEventListener('drop', function (e) {
-        e.preventDefault();
-        this.classList.remove('dragover');
-        const file = e.dataTransfer.files[0];
-        if (file) {
-          document.getElementById('fileInput').files = e.dataTransfer.files;
-          updateFileInfo(file);
+          const data = await response.json();
+          document.getElementById('outputBox').value = data.content;
+        } catch (error) {
+          console.error('Error:', error);
+          alert('Error uploading file');
         }
-      });
-    </script>
-  </body>
+      } else {
+        alert('Please select a file first.');
+      }
+    });
+
+    // Handle drag and drop
+    const dropZone = document.querySelector('.file-upload');
+    
+    dropZone.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      this.classList.add('dragover');
+    });
+
+    dropZone.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      this.classList.remove('dragover');
+    });
+
+    dropZone.addEventListener('drop', function(e) {
+      e.preventDefault();
+      this.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file) {
+        document.getElementById('fileInput').files = e.dataTransfer.files;
+        updateFileInfo(file);
+      }
+    });
+  </script>
+</body>
 </html>
