@@ -1,10 +1,10 @@
 const fileInput = document.getElementById('fileInput');
-const uploadButton = document.getElementById('uploadButton');
+// const uploadButton = document.getElementById('uploadButton');
 const submitButton = document.getElementById('submitButton');
 const recommendationBox = document.getElementById('recommendationBox');
 const fileStatus = document.createElement('div');
 fileStatus.className = 'file-status';
-uploadButton.parentNode.insertBefore(fileStatus, submitButton);
+fileInput.parentNode.insertBefore(fileStatus, submitButton);
 
 let fileContent = '';
 let fileType = '';
@@ -55,9 +55,9 @@ function setupCarousel(activities, currentIndex) {
   });
 }
 
-uploadButton.addEventListener('click', () => {
-  fileInput.click();
-});
+// uploadButton.addEventListener('click', () => {
+//   fileInput.click();
+// });
 
 fileInput.addEventListener('change', (event) => {
   const file = event.target.files[0];
@@ -77,12 +77,7 @@ fileInput.addEventListener('change', (event) => {
 
       fileStatus.innerHTML = `
         <div class="file-info">
-          <svg xmlns="http://www.w3.org/2000/svg" style="min-width: 16px; min-height: 16px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-            <polyline points="13 2 13 9 20 9"></polyline>
-          </svg>
-          <span>${file.name}</span>
-          <span class="success-check">✓</span>
+          Selected: ${file.name} (${(file.size / 1024).toFixed(2)} KB)
         </div>
       `;
     };
