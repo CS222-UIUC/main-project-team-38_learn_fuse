@@ -1,0 +1,91 @@
+Research – Mindmap API:
+Draw.io API
+Lucidchart API
+Has REST API that allows for generating and retrieving diagrams
+API flowchart - a high-level overview of what the API needs to accomplish. You can take that a step further by diagramming a model of how the software will actually function. Visualizing the API makes it easier to understand and digest the information and can save you time as you define system flow and model potential outcomes. 
+Unified Modeling Language (UML): common and standard way to visualize complex software structures. 
+You can design a model of API before you ever write a line of code. 
+Acts as a blueprint for diagramming a model for API development.
+With Lucidchart, you can plot the relationship between objects, and define the attributes or code snippets that will accompany those objects.
+Help plan or expose behavioral functions of your software.
+2 types of diagrams:
+Structural diagrams
+Class diagram: Represents the static structure of a system. It shows relationships between classes, objects, attributes, and operations.
+Component diagram: Displays the relationships of software components, including source code, run-time code, and executables.
+Deployment diagram: Represents the hardware and software resources in your system. Useful for mapping how a software solution will be deployed across multiple machines and platforms.
+Object diagram: Shows the relationship between objects using real-world examples. Display a representation of what a system looks like at any given time.
+Package diagram: Organizes elements into groups. Shows dependencies among different packages.  
+Profile diagram: Describes profiles that allow adaptation of the UML metamodel for different platforms and domains.
+Composite structure diagram: Displays the internal structure of a class.
+Behavioral diagrams
+Use case diagram: Model the functionality of a system and the actors who are involved in the system and its functionality. Actors are real-world examples such as customers, agents, and companies.
+Activity diagram: Used to diagram the workflow from one activity to the next.
+State machine diagram: Diagrams describe the behavior of objects that act differently according to their current state.
+Sequence diagram: Map the sequence of when and how objects interact with each other.
+Communication diagram: Map the flow of messages passed between objects.
+Interaction overview diagram: Shows the sequence of a collection of interaction diagrams.
+Timing diagram: Represent the behavior of objects within a specified time frame.
+
+Code Template:
+
+Initialization:
+mkdir learnfuse-backend
+cd learnfuse-backend
+npm init -y
+npm install express axios dotenv
+
+.env File:
+LUCIDCHART_API_TOKEN=your_api_token_here
+
+Backend Server:
+const express = require('express');
+const axios = require('axios');
+require('dotenv').config();
+
+const app = express();
+app.use(express.json());
+
+const LUCIDCHART_API_TOKEN = process.env.LUCIDCHART_API_TOKEN;
+const LUCIDCHART_BASE_URL = 'https://www.lucidchart.com/api/v1';
+
+Routes for Diagram Creation and Retrieval:
+app.post('/api/diagram/create', async (req, res) => {
+  const { title, content } = req.body;   
+  try {
+    const response = await axios.post(
+      `${LUCIDCHART_BASE_URL}/documents`,
+      { title, content },
+      {
+        headers: {
+          Authorization: `Bearer ${LUCIDCHART_API_TOKEN}`,
+        },
+      }
+    );
+    res.json({ success: true, diagramId: response.data.id });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+app.get('/api/diagram/:id', async (req, res) => {
+  const { id } = req.params; // Diagram ID
+
+  try {
+    const response = await axios.get(
+      `${LUCIDCHART_BASE_URL}/documents/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${LUCIDCHART_API_TOKEN}`,
+        },
+      }
+    );
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+
+
+
+
