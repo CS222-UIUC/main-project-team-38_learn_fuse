@@ -246,13 +246,17 @@ nav ul li a.active::after {
 }
 
 .file-info {
-  display: flex;
+  /* display: flex;
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
   background-color: #f0f9ff;
   border-radius: 6px;
   border: 1px solid #93c5fd;
+   */
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
 }
 
 .success-check {

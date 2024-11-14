@@ -32,8 +32,25 @@ async function extractTextFromFile(fileContent, fileType) {
   }
 }
 
+async function getGroqCompletion(recommendationPrompt) {
+  return await groq.chat.completions.create({
+    messages: [
+      {
+        role: 'user',
+        content: recommendationPrompt,
+      },
+    ],
+    model: 'mixtral-8x7b-32768',
+    temperature: 0.5,
+    max_tokens: 1024,
+  });
+}
+
 router.post('/', async (req, res) => {
   const { fileContent, fileType } = req.body;
+  const maxRetries = 1;
+  let attempt = 0;
+  let completion;
 
   try {
     const extractedText = await extractTextFromFile(fileContent, fileType);
@@ -52,20 +69,27 @@ router.post('/', async (req, res) => {
     - CONNECTION: [brief explanation]
     - MATERIALS: [simple list]
     - TIME: [duration]`;
-    const completion = await groq.chat.completions.create({
-      messages: [
-        {
-          role: 'user',
-          content: recommendationPrompt,
-        },
-      ],
-      model: 'mixtral-8x7b-32768',
-      temperature: 0.5,
-      max_tokens: 1024,
-    });
 
-    if (!completion.choices || completion.choices.length === 0) {
-      return res.status(500).json({ error: 'No recommendations generated' });
+    while (attempt <= maxRetries) {
+      completion = await getGroqCompletion(recommendationPrompt);
+
+      if (
+        completion.choices &&
+        completion.choices.length > 0 &&
+        completion.choices[0].message.content.split('GROQ-API-SUGG Activity')
+          .length > 2
+      ) {
+        break;
+      } else {
+        attempt++;
+        if (attempt > maxRetries) {
+          return res
+            .status(500)
+            .json({
+              error: 'Retry failed; insufficient recommendations generated',
+            });
+        }
+      }
     }
 
     return res.json(completion);
