@@ -209,6 +209,11 @@ nav ul li a.active::after {
   justify-content: center;
 }
 
+.note {
+  font-size: small;
+  color: #333;
+}
+
 .box p {
   margin: 0;
   font-size: 1.1rem;
