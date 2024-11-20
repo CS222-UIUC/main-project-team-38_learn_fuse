@@ -6,6 +6,7 @@ const auditoryFileOutput = document.getElementById('auditoryFileOutput');
 const recommendationBox = document.getElementById('recommendationBox');
 
 let fileContent = '';
+// let isFileTooLarge = false; 
 
 uploadButton.addEventListener('click', () => {
   fileInput.click();
@@ -13,7 +14,13 @@ uploadButton.addEventListener('click', () => {
 
 fileInput.addEventListener('change', (event) => {
   const file = event.target.files[0];
-  if (file && file.type == 'text/plain') {
+  const allowedTypes = [
+    'text/plain',
+    'application/pdf',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/msword',
+  ];
+  if (file && allowedTypes.includes(file.type)) {
     const reader = new FileReader();
 
     reader.onload = (event) => {
@@ -26,7 +33,7 @@ fileInput.addEventListener('change', (event) => {
 
     reader.readAsText(file);
   } else {
-    uploadStatus.textContent = 'Please upload a valid .txt file.';
+    uploadStatus.textContent = 'Please upload a valid file (.txt, .pdf, .doc, .docx)';
     uploadStatus.classList.add('error');
     uploadStatus.classList.remove('success');
   }
@@ -41,8 +48,6 @@ submitButton.addEventListener('click', async () => {
 
     recommendationBox.innerHTML = `<p>Loading...</p>`;
 
-    alert('File upload successful!');
-
     const response = await fetch('/api/text-to-speech', {
       method: 'POST',
       headers: {
@@ -52,8 +57,16 @@ submitButton.addEventListener('click', async () => {
     });
 
     if (!response.ok) {
+      // if (response.status == 413) {
+      //   isFileTooLarge = true; 
+      //   alert('File too large! Please upload a smaller file.'); 
+      //   return; 
+      // }
+
       throw new Error('Network response was not ok');
-    }
+    } 
+
+    alert('File upload successful!');
 
     const data = await response.json();
 
@@ -68,6 +81,11 @@ auditoryFileOutput.addEventListener('click', () => {
     alert('Please upload a file before trying to download!');
     return;
   }
+
+  // if (isFileTooLarge) {
+  //   alert('Sorry, file too large!');
+  //   return;
+  // }
 
   window.location.href = '/api/text-to-speech/download';
 });
