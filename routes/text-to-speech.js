@@ -10,7 +10,7 @@ let outputFile = 'audioFile.mp3';
 router.post('/', async (req, res) => {
   try {
     const { text } = req.body;
-    console.log(res);
+    // console.log(res);
 
     const language = 'en';
     const url = await tts.getAudioUrl(text, {

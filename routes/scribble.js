@@ -69,6 +69,7 @@ router.post('/', async function (request, response) {
     response.json({ content: content });
   } catch (error) {
     console.error(error);
+    return response.status(413).json();
   }
 });
 

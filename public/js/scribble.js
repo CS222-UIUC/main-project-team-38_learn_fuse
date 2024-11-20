@@ -107,14 +107,14 @@ document
         });
         document.getElementById('outputBox').value = '';
         if (response.status == 413) {
-          throw new Error(response.status);
-        }
-        if (!response.ok) {
+          alert('The file is too large. Please try uploading a smaller file.');
+        } else if (!response.ok) {
           throw new Error('Upload failed');
+        } else {
+            const data = await response.json();
+            document.getElementById('outputBox').value = data.content;
+            document.getElementById('recommendationBox').value = data.content;
         }
-        const data = await response.json();
-        document.getElementById('outputBox').value = data.content;
-        document.getElementById('recommendationBox').value = data.content;
       } catch (error) {
         console.error('Error:', error);
         // alert('Error uploading file');

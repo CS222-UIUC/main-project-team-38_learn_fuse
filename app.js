@@ -20,6 +20,9 @@ app.use('/api/kinesthetic', kinestheticRoutes);
 const auditoryRoutes = require('./routes/text-to-speech');
 app.use('/api/text-to-speech', auditoryRoutes);
 
+const videoRouter = require('./routes/video');
+app.use('/api/video', videoRouter);
+
 app.get('/', function (request, response) {
   // response.send("testing");
   response.sendFile(__dirname + '/views/index.html');
