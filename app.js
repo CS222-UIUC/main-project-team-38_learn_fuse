@@ -28,10 +28,9 @@ app.get('/', function (request, response) {
 const scribbleRoutes = require('./routes/scribble');
 app.use('/api/scribble', scribbleRoutes);
 
-//changes
-// app.get('/scribble', function (request, response) {
-//   response.sendFile(__dirname + '/views/scribble.html');
-// });
+const VisualRoutes = require('./routes/visual');
+app.use('/api/visual', VisualRoutes);
+
 
 app.listen(3000, function () {
   console.log('Server started on port 3000');
