@@ -17,7 +17,8 @@ async function extractTextFromFile(fileContent, fileType) {
       const pdfData = await pdfParse(buffer);
       return pdfData.text;
     } else if (
-      fileType == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      fileType ==
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
     ) {
       const result = await mammoth.extractRawText({ buffer });
       return result.value;

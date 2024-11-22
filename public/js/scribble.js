@@ -111,9 +111,9 @@ document
         } else if (!response.ok) {
           throw new Error('Upload failed');
         } else {
-            const data = await response.json();
-            document.getElementById('outputBox').value = data.content;
-            document.getElementById('recommendationBox').value = data.content;
+          const data = await response.json();
+          document.getElementById('outputBox').value = data.content;
+          document.getElementById('recommendationBox').value = data.content;
         }
       } catch (error) {
         console.error('Error:', error);

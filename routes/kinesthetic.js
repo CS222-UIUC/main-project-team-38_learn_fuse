@@ -83,11 +83,9 @@ router.post('/', async (req, res) => {
       } else {
         attempt++;
         if (attempt > maxRetries) {
-          return res
-            .status(500)
-            .json({
-              error: 'Retry failed; insufficient recommendations generated',
-            });
+          return res.status(500).json({
+            error: 'Retry failed; insufficient recommendations generated',
+          });
         }
       }
     }

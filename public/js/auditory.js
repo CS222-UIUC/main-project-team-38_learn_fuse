@@ -10,35 +10,37 @@ let fileType = '';
 
 async function updateRecommendations() {
   try {
-      const response = await fetch('/api/video/', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ fileContent, fileType }),
-      });
+    const response = await fetch('/api/video/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ fileContent, fileType }),
+    });
 
-      if (response.status == 413) {
-        throw new Error('413');
-      }
+    if (response.status == 413) {
+      throw new Error('413');
+    }
 
-      if (!response.ok) {
-          throw new Error('Failed to fetch recommendations');
-      }
+    if (!response.ok) {
+      throw new Error('Failed to fetch recommendations');
+    }
 
-      const data = await response.json();
+    const data = await response.json();
 
-      console.log(data);
+    console.log(data);
 
-      if (data.recommendations.length == 0) {
-        recommendationBox.innerHTML = '<p>No related videos found</p>';
-        return;
-      }
-      
-      // Update recommendation box
-      recommendationBox.innerHTML = `
+    if (data.recommendations.length == 0) {
+      recommendationBox.innerHTML = '<p>No related videos found</p>';
+      return;
+    }
+
+    // Update recommendation box
+    recommendationBox.innerHTML = `
           <h3>Video Recommendations</h3>
-          ${data.recommendations.map(video => `
+          ${data.recommendations
+            .map(
+              (video) => `
               <div class="video-recommendation">
                   <h4>${video.title}</h4>
                   <p class="video-source">${video.source}</p>
@@ -47,15 +49,18 @@ async function updateRecommendations() {
                       Watch Video
                   </a>
               </div>
-          `).join('')}
+          `
+            )
+            .join('')}
       `;
   } catch (error) {
-    if (error.message == "413") {
+    if (error.message == '413') {
       alert('The file is too large. Please try uploading a smaller file.');
       recommendationBox.innerHTML = '<p>Error loading recommendations</p>';
     } else {
       console.error('Error fetching recommendations:', error);
-      recommendationBox.innerHTML = '<p>Failed to load video recommendations</p>';
+      recommendationBox.innerHTML =
+        '<p>Failed to load video recommendations</p>';
     }
   }
 }
@@ -86,7 +91,8 @@ fileInput.addEventListener('change', (event) => {
 
     reader.readAsDataURL(file);
   } else {
-    uploadStatus.textContent = 'Please upload a valid file (.txt, .pdf, .doc, .docx)';
+    uploadStatus.textContent =
+      'Please upload a valid file (.txt, .pdf, .doc, .docx)';
     uploadStatus.classList.add('error');
     uploadStatus.classList.remove('success');
   }
@@ -94,50 +100,50 @@ fileInput.addEventListener('change', (event) => {
 
 submitButton.addEventListener('click', async () => {
   try {
-      if (fileContent === '') {
-          alert('Please upload a file before submitting!');
-          return;
-      }
+    if (fileContent === '') {
+      alert('Please upload a file before submitting!');
+      return;
+    }
 
-      recommendationBox.innerHTML = `<p>Loading...</p>`;
+    recommendationBox.innerHTML = `<p>Loading...</p>`;
 
-      // Fetch video recommendations
-      await updateRecommendations();
+    // Fetch video recommendations
+    await updateRecommendations();
 
-      var response = await fetch('/api/text-to-speech', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ text: fileContent, type: fileType }),
-      });
+    var response = await fetch('/api/text-to-speech', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text: fileContent, type: fileType }),
+    });
 
-      if (response.status == 413) {
-        throw new Error('413');
-      }
+    if (response.status == 413) {
+      throw new Error('413');
+    }
 
     if (!response.ok) {
       // if (response.status == 413) {
-      //   isFileTooLarge = true; 
-      //   alert('File too large! Please upload a smaller file.'); 
-      //   return; 
+      //   isFileTooLarge = true;
+      //   alert('File too large! Please upload a smaller file.');
+      //   return;
       // }
 
       throw new Error('Network response was not ok');
-    } 
+    }
 
     alert('File upload successful!');
 
-      const data = await response.json();
-      console.log(data);
-      
-      alert('File upload successful!');
+    const data = await response.json();
+    console.log(data);
+
+    alert('File upload successful!');
   } catch (error) {
-      console.error('Error occurred:', error);
-      // if (error.message == '413') {
-      //   alert('The file is too large. Please try uploading a smaller file.');
-      // }
-      recommendationBox.innerHTML = '<p>Error loading recommendations</p>';
+    console.error('Error occurred:', error);
+    // if (error.message == '413') {
+    //   alert('The file is too large. Please try uploading a smaller file.');
+    // }
+    recommendationBox.innerHTML = '<p>Error loading recommendations</p>';
   }
 });
 
