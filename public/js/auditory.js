@@ -18,6 +18,10 @@ async function updateRecommendations() {
           body: JSON.stringify({ fileContent, fileType }),
       });
 
+      if (response.status == 413) {
+        throw new Error('413');
+      }
+
       if (!response.ok) {
           throw new Error('Failed to fetch recommendations');
       }
@@ -25,6 +29,11 @@ async function updateRecommendations() {
       const data = await response.json();
 
       console.log(data);
+
+      if (data.recommendations.length == 0) {
+        recommendationBox.innerHTML = '<p>No related videos found</p>';
+        return;
+      }
       
       // Update recommendation box
       recommendationBox.innerHTML = `
@@ -41,8 +50,13 @@ async function updateRecommendations() {
           `).join('')}
       `;
   } catch (error) {
+    if (error.message == "413") {
+      alert('The file is too large. Please try uploading a smaller file.');
+      recommendationBox.innerHTML = '<p>Error loading recommendations</p>';
+    } else {
       console.error('Error fetching recommendations:', error);
       recommendationBox.innerHTML = '<p>Failed to load video recommendations</p>';
+    }
   }
 }
 
@@ -52,7 +66,13 @@ uploadButton.addEventListener('click', () => {
 
 fileInput.addEventListener('change', (event) => {
   const file = event.target.files[0];
-  if (file && file.type == 'text/plain') {
+  const allowedTypes = [
+    'text/plain',
+    'application/pdf',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/msword',
+  ];
+  if (file && allowedTypes.includes(file.type)) {
     const reader = new FileReader();
 
     reader.onload = (event) => {
@@ -66,7 +86,7 @@ fileInput.addEventListener('change', (event) => {
 
     reader.readAsDataURL(file);
   } else {
-    uploadStatus.textContent = 'Please upload a valid .txt file.';
+    uploadStatus.textContent = 'Please upload a valid file (.txt, .pdf, .doc, .docx)';
     uploadStatus.classList.add('error');
     uploadStatus.classList.remove('success');
   }
@@ -84,18 +104,29 @@ submitButton.addEventListener('click', async () => {
       // Fetch video recommendations
       await updateRecommendations();
 
-      // Your existing text-to-speech API call
-      const response = await fetch('/api/text-to-speech', {
+      var response = await fetch('/api/text-to-speech', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ text: fileContent.slice(0, 200) }),
+          body: JSON.stringify({ text: fileContent, type: fileType }),
       });
 
-      if (!response.ok) {
-          throw new Error('Network response was not ok');
+      if (response.status == 413) {
+        throw new Error('413');
       }
+
+    if (!response.ok) {
+      // if (response.status == 413) {
+      //   isFileTooLarge = true; 
+      //   alert('File too large! Please upload a smaller file.'); 
+      //   return; 
+      // }
+
+      throw new Error('Network response was not ok');
+    } 
+
+    alert('File upload successful!');
 
       const data = await response.json();
       console.log(data);
@@ -103,6 +134,9 @@ submitButton.addEventListener('click', async () => {
       alert('File upload successful!');
   } catch (error) {
       console.error('Error occurred:', error);
+      // if (error.message == '413') {
+      //   alert('The file is too large. Please try uploading a smaller file.');
+      // }
       recommendationBox.innerHTML = '<p>Error loading recommendations</p>';
   }
 });
@@ -112,6 +146,11 @@ auditoryFileOutput.addEventListener('click', () => {
     alert('Please upload a file before trying to download!');
     return;
   }
+
+  // if (isFileTooLarge) {
+  //   alert('Sorry, file too large!');
+  //   return;
+  // }
 
   window.location.href = '/api/text-to-speech/download';
 });

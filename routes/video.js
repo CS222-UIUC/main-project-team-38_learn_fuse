@@ -29,52 +29,9 @@ async function extractTextFromFile(fileContent, fileType) {
     }
   }
 
-async function getSearchQueryFromNoteTaker(text, type) {
-    const prompt = `You are a learning resource finder for videos on Internet Archive and Vimeo. Given the text, create a search query to find educational videos.
-                Rules:
-                1. Output ONLY the search query, nothing else
-                2. Keep it under 200 characters, preferably only 4-5 words
-                3. Add "tutorial" or "learn" if it's a skill/concept
-                4. If the text discusses multiple topics, focus on the most important one
-                5. Make it general enough to get results
-                
-                Example outputs:
-                "linear algebra matrices mathematics tutorial"
-                "photosynthesis biology learn"
-                "world war 2 pacific theater history"
-                "python loops programming tutorial"
-                
-                CONTENT: `;
-    try {
-        const data = await extractTextFromFile(text, type);
-        const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
-        const groqApiResponse = await groq.chat.completions.create({
-            messages: [
-            {
-                role: 'user',
-                content: prompt + data,
-            },
-            ],
-            model: 'mixtral-8x7b-32768',
-            temperature: 0.5,
-            max_tokens: 128,
-        });
-        const content = groqApiResponse.choices[0].message.content;
-        return content;
-    } catch (error) {
-        console.error('Note taker API error:', error);
-        // Fallback to simple topic extraction if note taker fails
-        // retry with smaller instead - UPDATE
-        const mainWords = text.slice(0, 500) // Take first 500 chars
-            .toLowerCase()
-            .replace(/[^\w\s]/g, ' ')
-            .split(' ')
-            .filter(word => word.length > 3)
-            .slice(0, 3)
-            .join(' ');
-        return mainWords + ' tutorial';
-    }
-}
+// async function getSearchQueryFromNoteTaker(text, type) {
+
+// }
 
 async function searchInternetArchive(searchQuery) {
     try {
@@ -144,13 +101,43 @@ router.post('/', async function (req, res) {
         
         var searchQuery = '';
     
-        searchQuery = await getSearchQueryFromNoteTaker(fileContent, fileType);
+        // searchQuery, err = await getSearchQueryFromNoteTaker(fileContent, fileType);
+        const prompt = `You are a learning resource finder for videos on Internet Archive and Vimeo. Given the text, create a search query to find educational videos.
+        Rules:
+        1. Output ONLY one search query, nothing else
+        2. Keep it under 200 characters, preferably only 4-5 words
+        3. Add "tutorial" or "learn" if it's a skill/concept
+        4. If the text discusses multiple topics, focus on the most important one
+        5. Make it general enough to get results
+        
+        Example outputs:
+        "linear algebra matrices mathematics tutorial"
+        "photosynthesis biology learn"
+        "world war 2 pacific theater history"
+        "python loops programming tutorial"
+        
+        CONTENT: `;
+        const data = await extractTextFromFile(fileContent, fileType);
+        const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+        const groqApiResponse = await groq.chat.completions.create({
+        messages: [
+        {
+            role: 'user',
+            content: prompt + data,
+        },
+        ],
+        model: 'mixtral-8x7b-32768',
+        temperature: 0.5,
+        max_tokens: 128,
+        });
+        searchQuery = groqApiResponse.choices[0].message.content;
+
         searchQuery = removeQuotes(searchQuery);
-        // console.log("query: ", searchQuery);
 
         var archiveResults = [];
         var vimeoResults = [];
         for (let i = 0; i < 5; i++) {
+            console.log("query: ", searchQuery);
             if (archiveResults.length == 0) {
                 archiveResults = await searchInternetArchive(searchQuery);
             }
@@ -164,6 +151,9 @@ router.post('/', async function (req, res) {
             }
             const words = searchQuery.split(' ');
             words.pop();
+            if (words.length == 0) {
+                break;
+            }
             searchQuery = words.join(' ');
         }
 
@@ -173,6 +163,12 @@ router.post('/', async function (req, res) {
         });
     } catch (error) {
         console.error('Error getting recommendations:', error);
+        if (error.status == 413) {
+            return res.status(413).json({
+                error: 'File is too large to be processed',
+                details: error.message,
+              });
+        }
         res.status(500).json({ error: 'Failed to get recommendations' });
     }
 });

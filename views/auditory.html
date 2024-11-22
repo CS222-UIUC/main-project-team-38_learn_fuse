@@ -45,20 +45,21 @@
       <div class="auditory-container">
         <div class="input-box">
           <p><b>What is the auditory learning style?</b></p>
-          <p>Enter text here.</p>
+          <p>The auditory learning style involves learning best through listening, such as through lectures, discussions, and verbal explanations.</p>
         </div>
 
         <div class="input-box">
           <input
             type="file"
             id="fileInput"
-            accept=".txt"
+            accept=".txt,.pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
             style="display: none"
           />
           <button class="button-style" id="uploadButton">
             Click to Upload File
           </button>
-          <p class="uploadStatus" id="uploadStatus"></p>
+          <p class="note">Accepted types: .txt, .pdf, .doc, .docx</p>
+          <p class="uploadStatus" id="uploadStatus">No file selected</p>
           <button class="button-style" id="submitButton">Submit</button>
         </div>
       </div>
@@ -74,7 +75,7 @@
 
     <section class="auditory-recommendations">
       <div class="recommendation-box" id="recommendationBox">
-        <p><b>YouTube Recommendations</b></p>
+        <p><b>Video Recommendations</b></p>
       </div>
     </section>
 

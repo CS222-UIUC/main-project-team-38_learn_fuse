@@ -85,6 +85,28 @@ app.get('/api/diagram/:id', async (req, res) => {
   }
 });
 
+Additional research :
+Creately API 
+API to create flowcharts, mind maps, and various other diagrams
+create, read, and update diagrams
+Might be paid
+Textographo API 
+Converts text into flow charts & diagrams
+Has a variety of diagram options like decision trees as well.
+yEd Graph Editor API
+desktop application that also provides an API for programmatically creating complex diagrams.
+capabilities for creating various types of diagrams and supports exporting to different formats.
+no official REST API, but yEd’s GraphML XML format can be used for scripting and batch processing.
+ MindMeister API
+designed for creating mind maps and includes collaboration features.
+supports creating and updating mind maps, which is great for apps focused on brainstorming or project management.
+Requires an API key with endpoints for creating and managing mind maps.
+Mermaid.js & Gojs
+Javascript libraries that can be embedded into the application to convert text input to diagrams. 
+Various diagram options are available, and the libraries are free to use. 
+Offers detailed customization and interaction options, suitable for applications requiring client-side diagramming.
+offers capabilities for creating various types of diagrams and supports exporting to different formats.
+
 
 
 
