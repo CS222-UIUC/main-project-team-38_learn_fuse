@@ -69,6 +69,10 @@ router.post('/', async function (request, response) {
     response.json({ content: content });
   } catch (error) {
     console.error(error);
+    return response.status(error.status).json({
+      error: 'An error occurred while processing your request',
+      details: error.message,
+    });
   }
 });
 
