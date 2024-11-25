@@ -1,19 +1,112 @@
 document.addEventListener('DOMContentLoaded', () => {
   const toggleQuizBtn = document.getElementById('toggle-quiz');
   const quizForm = document.getElementById('learning-type-quiz');
+  const nextButton = document.getElementById('nextButton');
+  const prevButton = document.getElementById('prevButton');
+
+  let isFirstClick = true; 
+  let isRestart = false; 
+
   toggleQuizBtn.onclick = function () {
+    if (isRestart) {
+      quizForm.reset();
+      document.getElementById('quiz-results').style.display = 'none';
+      document.getElementById(`question1`).style.display = "block";
+      isFirstClick = false; 
+    }
+
     if (quizForm.style.display === 'none') {
       quizForm.style.display = 'block';
       toggleQuizBtn.innerText = 'Hide Quiz';
+
       let resultsContainer = document.getElementById('quiz-results');
       if (resultsContainer.style.display != 'none') {
         quizForm.reset();
         resultsContainer.style.display = 'none';
       }
+
+      if (isFirstClick) {
+        document.getElementById(`question1`).style.display = "block";
+        isFirstClick = false; 
+      } else {
+        document.getElementById("prevButton").style.display = "block";
+      }
+
+      document.getElementById("nextButton").style.display = "block"; 
+      
     } else {
       quizForm.style.display = 'none';
       toggleQuizBtn.innerText = 'Start Quiz';
+      document.getElementById("nextButton").style.display = 'none';
+      document.getElementById("prevButton").style.display = 'none';
     }
+  };
+
+  let currentQuestionIndex = 1;
+
+  nextButton.onclick = function () {
+    const currentQuestion = document.getElementById(`question${currentQuestionIndex}`);
+
+    const questionName = `q${currentQuestionIndex}`;
+    const selectedAnswer = document.querySelector(
+      `input[name="${questionName}"]:checked`
+    );
+
+    if (!selectedAnswer) {
+      alert('Please select an option!');
+    } else {
+      currentQuestion.style.display = "none";
+    
+      currentQuestionIndex++;
+      
+      const nextQuestion = document.getElementById(`question${currentQuestionIndex}`);
+  
+      if (nextQuestion == null) {
+        document.getElementById('toggle-quiz').style.display = "none";
+        document.getElementById("nextButton").style.display = "none"; 
+        document.getElementById("prevButton").style.display = "none"; 
+        document.getElementById("submitButton").style.display = "block"; 
+      } else {
+        nextQuestion.style.display = "block";
+        prevButton.style.display = "block"; 
+      }
+
+      document.getElementById("quizProgress").value = currentQuestionIndex;
+    }
+
+  };
+
+  prevButton.onclick = function () {
+    const currentQuestion = document.getElementById(`question${currentQuestionIndex}`);
+    currentQuestion.style.display = "none";
+    
+    currentQuestionIndex--;
+    
+    const prevQuestion = document.getElementById(`question${currentQuestionIndex}`);
+
+    if (currentQuestionIndex == 1) { 
+      prevButton.style.display = "none"; 
+      document.getElementById(`question1`).style.display = "block";
+      isFirstClick = true; 
+    } else {
+      document.getElementById(`question1`).style.display = "none";
+      prevQuestion.style.display = "block";
+    }
+
+  };
+
+  document.getElementById("submitButton").onclick = function () {
+    document.getElementById("submitButton").style.display = "none";
+
+    document.getElementById('toggle-quiz').style.display = "block"; 
+    document.getElementById('toggle-quiz').innerText = "Restart Quiz";
+    isRestart = true;  
+    currentQuestionIndex = 1; 
+
+    document.getElementById("quizProgress").value = 0;
+
+    document.getElementById("nextButton").style.display = "none";
+    document.getElementById("prevButton").style.display = "none";
   };
 
   const answerWeights = {
