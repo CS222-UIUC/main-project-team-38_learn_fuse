@@ -280,6 +280,17 @@ nav ul li a.active::after {
   color: white;
 }
 
+#backToLastQuestion {
+  background-color: #4CAF50; 
+  color: white;
+  margin-top: 20px;
+  display: block;
+}
+
+#submitButton {
+  margin-bottom: 10px;
+}
+
 #prevButton:hover,
 #nextButton:hover {
   opacity: 0.8; 

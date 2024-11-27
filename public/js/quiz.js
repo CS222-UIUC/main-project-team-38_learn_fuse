@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
       quizForm.reset();
       document.getElementById('quiz-results').style.display = 'none';
       document.getElementById(`question1`).style.display = "block";
+      document.getElementById("backToLastQuestion").style.display = "none";
       isFirstClick = false; 
     }
 
@@ -66,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById("nextButton").style.display = "none"; 
         document.getElementById("prevButton").style.display = "none"; 
         document.getElementById("submitButton").style.display = "block"; 
+        document.getElementById("backToLastQuestion").style.display = "block";
       } else {
         nextQuestion.style.display = "block";
         prevButton.style.display = "block"; 
@@ -93,6 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
       prevQuestion.style.display = "block";
     }
 
+    document.getElementById("quizProgress").value = currentQuestionIndex;
+
   };
 
   document.getElementById("submitButton").onclick = function () {
@@ -107,6 +111,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById("nextButton").style.display = "none";
     document.getElementById("prevButton").style.display = "none";
+    document.getElementById("backToLastQuestion").style.display = "none";
+  };
+
+  document.getElementById("backToLastQuestion").onclick = function () {
+    document.getElementById("submitButton").style.display = "none";
+    document.getElementById("backToLastQuestion").style.display = "none";
+
+    currentQuestionIndex--;
+    const currentQuestion = document.getElementById(`question${currentQuestionIndex}`);
+    currentQuestion.style.display = "block";
+
+    document.getElementById("nextButton").style.display = "block";
+    document.getElementById("prevButton").style.display = "block";
+
+    document.getElementById("quizProgress").value = currentQuestionIndex;
   };
 
   const answerWeights = {
@@ -245,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (dominantStyleInfo.title === 'Visual Learner') {
       dominantColor = '#3498db';
     } else if (dominantStyleInfo.title == 'Auditory Learner') {
-      dominantColor = 'e74c3c';
+      dominantColor = '#e74c3c';
     } else if (dominantStyleInfo.title == 'Kinesthetic Learner') {
       dominantColor = '#2ecc71';
     } else {
