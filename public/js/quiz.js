@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isRestart) {
       quizForm.reset();
       document.getElementById('quiz-results').style.display = 'none';
-      document.getElementById(`question1`).style.display = "block";
       document.getElementById("backToLastQuestion").style.display = "none";
-      isFirstClick = false; 
+      isFirstClick = true; 
+      isRestart = false; 
     }
 
     if (quizForm.style.display === 'none') {
@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isFirstClick) {
         document.getElementById(`question1`).style.display = "block";
         isFirstClick = false; 
+        isRestart = false; 
       } else {
         document.getElementById("prevButton").style.display = "block";
       }
