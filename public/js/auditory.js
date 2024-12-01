@@ -4,6 +4,7 @@ const submitButton = document.getElementById('submitButton');
 const uploadStatus = document.getElementById('uploadStatus');
 const auditoryFileOutput = document.getElementById('auditoryFileOutput');
 const recommendationBox = document.getElementById('recommendationBox');
+const fileLoading = document.getElementById('fileLoading');
 
 let fileContent = '';
 let fileType = '';
@@ -35,7 +36,6 @@ async function updateRecommendations() {
       return;
     }
 
-    // Update recommendation box
     recommendationBox.innerHTML = `
           <h3>Video Recommendations</h3>
           ${data.recommendations
@@ -105,6 +105,17 @@ submitButton.addEventListener('click', async () => {
       return;
     }
 
+    auditoryFileOutput.disabled = true;
+    fileLoading.innerText = "Loading...";
+
+    const targetElement = document.getElementsByClassName('auditory-output')[0]
+
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop,
+        behavior: 'smooth'
+      });
+    }
     recommendationBox.innerHTML = `<p>Loading...</p>`;
 
     // Fetch video recommendations
@@ -132,18 +143,22 @@ submitButton.addEventListener('click', async () => {
       throw new Error('Network response was not ok');
     }
 
-    alert('File upload successful!');
+    auditoryFileOutput.disabled = false;
+    fileLoading.innerText = "";
+
+    // alert('File upload successful!');
 
     const data = await response.json();
     console.log(data);
 
-    alert('File upload successful!');
+    // alert('File upload successful!');
   } catch (error) {
     console.error('Error occurred:', error);
     // if (error.message == '413') {
     //   alert('The file is too large. Please try uploading a smaller file.');
     // }
-    recommendationBox.innerHTML = '<p>Error loading recommendations</p>';
+    fileLoading.innerText = "Error occurred while converting text to speech";
+    auditoryFileOutput.disabled = true;
   }
 });
 

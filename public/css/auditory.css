@@ -258,6 +258,22 @@ nav ul li a.active::after {
   transform: translateY(-2px);
 }
 
+.button-style:disabled {
+  background-color: #999;
+  color: white;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.button-style:disabled:hover {
+  background-color: #999;
+  box-shadow: none;
+  transform: none;
+}
+
 /* Auditory Output Section*/
 .auditory-output {
   padding: 4rem 5%;
