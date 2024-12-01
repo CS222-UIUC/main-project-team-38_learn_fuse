@@ -95,6 +95,15 @@ submitButton.addEventListener('click', async () => {
       return;
     }
 
+    const targetElement = document.getElementsByClassName('auditory-recommendations')[0]
+
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop,
+        behavior: 'smooth'
+      });
+    }
+
     recommendationBox.innerHTML = `<p>Loading...</p>`;
 
     const response = await fetch('/api/kinesthetic', {

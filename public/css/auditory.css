@@ -11,6 +11,10 @@
   --soft-blue: #e7eef5;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
