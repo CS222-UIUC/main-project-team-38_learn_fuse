@@ -92,6 +92,7 @@ router.post('/', async (req, res) => {
 
     return res.json(completion);
   } catch (error) {
+    console.log(error);
     return res.status(error.status).json({
       error: 'An error occurred while processing your request',
       details: error.message,

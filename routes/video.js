@@ -70,7 +70,7 @@ async function searchVimeo(searchQuery) {
       params: {
         query: searchQuery,
         per_page: 5,
-        filter: 'CC',
+        // filter: 'CC',
         sort: 'relevant',
         fields: 'name,description,link,duration',
       },
@@ -106,10 +106,12 @@ router.post('/', async function (req, res) {
     const prompt = `You are a learning resource finder for videos on Internet Archive and Vimeo. Given the text, create a search query to find educational videos.
         Rules:
         1. Output ONLY one search query, nothing else
-        2. Keep it under 200 characters, preferably only 4-5 words
+        2. Your entire output, i.e. only the query, should be under 200 characters, preferably only 4-5 words
         3. Add "tutorial" or "learn" if it's a skill/concept
         4. If the text discusses multiple topics, focus on the most important one
         5. Make it general enough to get results
+        6. If the content is random and the general topic is not clear, output an empty string "" ONLY, nothing else.
+        7. DO NOT give any notes or comments on the query. Only output the query.
         
         Example outputs:
         "linear algebra matrices mathematics tutorial"
@@ -133,34 +135,42 @@ router.post('/', async function (req, res) {
     });
     searchQuery = groqApiResponse.choices[0].message.content;
 
+    searchQuery = searchQuery.split("\n")[0];
+    searchQuery = searchQuery.split("//")[0];
+    searchQuery = searchQuery.trim();
     searchQuery = removeQuotes(searchQuery);
 
     var archiveResults = [];
     var vimeoResults = [];
-    for (let i = 0; i < 5; i++) {
-      console.log('query: ', searchQuery);
-      if (archiveResults.length == 0) {
-        archiveResults = await searchInternetArchive(searchQuery);
-      }
-      if (vimeoResults.length == 0) {
-        vimeoResults = await searchVimeo(searchQuery);
-      }
+    var allResults;
+    if (searchQuery.length == 0) {
+      allResults = [];
+    } else {
+      for (let i = 0; i < 5; i++) {
+        console.log('query: ', searchQuery);
+        if (archiveResults.length == 0) {
+          archiveResults = await searchInternetArchive(searchQuery);
+        }
+        if (vimeoResults.length == 0) {
+          vimeoResults = await searchVimeo(searchQuery);
+        }
 
-      var allResults = [...archiveResults, ...vimeoResults];
-      if (archiveResults.length > 0 && vimeoResults > 0) {
-        break;
+        allResults = [...vimeoResults, ...archiveResults];
+        if (archiveResults.length > 0 && vimeoResults > 0) {
+          break;
+        }
+        const words = searchQuery.split(' ');
+        words.pop();
+        if (words.length == 0) {
+          break;
+        }
+        searchQuery = words.join(' ');
       }
-      const words = searchQuery.split(' ');
-      words.pop();
-      if (words.length == 0) {
-        break;
-      }
-      searchQuery = words.join(' ');
     }
 
     res.json({
       recommendations: allResults,
-      searchQuery, // Include for debugging/transparency
+      searchQuery,
     });
   } catch (error) {
     console.error('Error getting recommendations:', error);

@@ -1,6 +1,7 @@
 const fileInput = document.getElementById('fileInput');
-// const uploadButton = document.getElementById('uploadButton');
+const uploadButton = document.getElementById('uploadButton');
 const submitButton = document.getElementById('submitButton');
+const uploadStatus = document.getElementById('uploadStatus');
 const recommendationBox = document.getElementById('recommendationBox');
 const fileStatus = document.createElement('div');
 fileStatus.className = 'file-status';
@@ -8,6 +9,10 @@ fileInput.parentNode.insertBefore(fileStatus, submitButton);
 
 let fileContent = '';
 let fileType = '';
+
+uploadButton.addEventListener('click', () => {
+  fileInput.click();
+});
 
 function displayActivities(activities, currentIndex = 0) {
   const activity = activities[currentIndex];
@@ -55,10 +60,6 @@ function setupCarousel(activities, currentIndex) {
   });
 }
 
-// uploadButton.addEventListener('click', () => {
-//   fileInput.click();
-// });
-
 fileInput.addEventListener('change', (event) => {
   const file = event.target.files[0];
   const allowedTypes = [
@@ -75,16 +76,23 @@ fileInput.addEventListener('change', (event) => {
       fileContent = event.target.result.split(',')[1];
       submitButton.disabled = false;
 
-      fileStatus.innerHTML = `
-        <div class="file-info">
-          Selected: ${file.name} (${(file.size / 1024).toFixed(2)} KB)
-        </div>
-      `;
+      // fileStatus.innerHTML = `
+      //   <div class="file-info">
+      //     Selected: ${file.name} (${(file.size / 1024).toFixed(2)} KB)
+      //   </div>
+      // `;
+      uploadStatus.textContent = `File uploaded: ${file.name} of size ${(file.size / 1024).toFixed(2)} KB`;
+      uploadStatus.classList.remove('error');
+      uploadStatus.classList.add('success');
     };
 
     reader.readAsDataURL(file);
   } else {
-    alert('Please upload a valid file (.txt, .pdf, .doc, .docx)');
+    // alert('Please upload a valid file (.txt, .pdf, .doc, .docx)');
+    uploadStatus.textContent =
+      'Please upload a valid file (.txt, .pdf, .doc, .docx)';
+    uploadStatus.classList.add('error');
+    uploadStatus.classList.remove('success');
   }
 });
 
@@ -93,6 +101,15 @@ submitButton.addEventListener('click', async () => {
     if (fileContent === '') {
       alert('Please upload a file before submitting!');
       return;
+    }
+
+    const targetElement = document.getElementsByClassName('auditory-recommendations')[0]
+
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop,
+        behavior: 'smooth'
+      });
     }
 
     recommendationBox.innerHTML = `<p>Loading...</p>`;

@@ -1,4 +1,3 @@
-/* General Styles */
 :root {
   --primary-color: #3498db;
   --secondary-color: #2c3e50;
@@ -16,6 +15,10 @@ body {
   font-family: 'Poppins', sans-serif;
   color: var(--text-color);
   line-height: 1.6;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 h1,
@@ -209,10 +212,34 @@ nav ul li a.active::after {
   justify-content: center;
 }
 
+.note {
+  font-size: small;
+  color: #333;
+}
+
 .box p {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+.uploadStatus {
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.uploadStatus.success {
+  color: green;
+  background-color: #e6f7e6;
+  border: 1px solid #c2e0c2;
+}
+
+.uploadStatus.error {
+  color: red;
+  background-color: #fbe4e4;
+  border: 1px solid #f5c2c2;
 }
 
 .button-style {
@@ -234,35 +261,42 @@ nav ul li a.active::after {
   transform: translateY(-2px);
 }
 
-.note {
-  font-size: small;
-  color: #333;
+.button-style:disabled {
+  background-color: #999;
+  color: white;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  opacity: 0.7;
+  pointer-events: none;
 }
 
-.file-status {
+.button-style:disabled:hover {
+  background-color: #999;
+  box-shadow: none;
+  transform: none;
+}
+
+/* .file-status {
   margin: 10px 0;
   min-height: 16px;
   max-width: 100%;
 }
 
 .file-info {
-  /* display: flex;
+  display: flex;
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
   background-color: #f0f9ff;
   border-radius: 6px;
   border: 1px solid #93c5fd;
-   */
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #666;
-}
+} */
 
-.success-check {
+/* .success-check {
   color: #16a34a;
   font-weight: bold;
-}
+} */
 
 .carousel-container {
   position: sticky;

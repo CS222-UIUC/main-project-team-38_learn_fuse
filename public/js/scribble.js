@@ -97,6 +97,14 @@ document
           alert('Please upload a file before submitting!');
           return;
         }
+        const targetElement = document.getElementsByClassName('scribble-output')[0]
+
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop,
+            behavior: 'smooth'
+          });
+        }
         document.getElementById('outputBox').value = 'Loading...';
         const response = await fetch('/api/scribble', {
           method: 'POST',
