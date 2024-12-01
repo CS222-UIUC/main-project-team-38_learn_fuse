@@ -1,4 +1,3 @@
-/* General Styles */
 :root {
   --primary-color: #3498db;
   --secondary-color: #2c3e50;
@@ -246,10 +245,10 @@ nav ul li a.active::after {
 .button-style {
   margin-top: 1rem;
   padding: 0.5rem 1.5rem;
-  background-color: #666; /* Grey background for the button */
-  color: white; /* White text color */
+  background-color: #666;
+  color: white;
   border: none;
-  border-radius: 4px; /* Rounded button corners */
+  border-radius: 4px;
   cursor: pointer;
   transition:
     box-shadow 0.3s ease,
@@ -257,7 +256,7 @@ nav ul li a.active::after {
 }
 
 .button-style:hover {
-  background-color: #555; /* Darker grey when hovered */
+  background-color: #555;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
 }
@@ -276,6 +275,33 @@ nav ul li a.active::after {
   background-color: #999;
   box-shadow: none;
   transform: none;
+}
+
+/* .file-status {
+  margin: 10px 0;
+  min-height: 16px;
+  max-width: 100%;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: #f0f9ff;
+  border-radius: 6px;
+  border: 1px solid #93c5fd;
+} */
+
+/* .success-check {
+  color: #16a34a;
+  font-weight: bold;
+} */
+
+.carousel-container {
+  position: sticky;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 /* Activity Card Styles */

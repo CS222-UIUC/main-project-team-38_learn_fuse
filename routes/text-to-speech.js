@@ -5,7 +5,9 @@ const mammoth = require('mammoth');
 const fs = require('fs');
 const tts = require('google-tts-api');
 const axios = require('axios');
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg = require('fluent-ffmpeg');
+ffmpeg.setFfmpegPath(ffmpegPath);
 
 const finalOutputFile = 'final-audioFile.mp3';
 
