@@ -70,7 +70,7 @@ async function searchVimeo(searchQuery) {
       params: {
         query: searchQuery,
         per_page: 5,
-        filter: 'CC',
+        // filter: 'CC',
         sort: 'relevant',
         fields: 'name,description,link,duration',
       },
