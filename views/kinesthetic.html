@@ -57,15 +57,16 @@
             type="file"
             id="fileInput"
             accept=".txt,.pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            style="display: none"
           />
-          <!-- <button class="button-style" id="uploadButton">
+          <button class="button-style" id="uploadButton">
             Click to Upload File
-          </button> -->
-          <p class="note">Accepted types: .txt, .pdf, .doc, .docx</p>
-          <button class="button-style" id="submitButton" disabled>
-            Submit
           </button>
+          <p class="note">Accepted types: .txt, .pdf, .doc, .docx</p>
+          <p class="uploadStatus" id="uploadStatus">No file selected</p>
+          <button class="button-style" id="submitButton" disabled>Submit</button>
         </div>
+      </div>
       </div>
     </section>
 
