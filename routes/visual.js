@@ -5,6 +5,7 @@ const pdfParse = require('pdf-parse');
 const mammoth = require('mammoth');
 
 async function extractTextFromFile(fileContent, fileType) {
+  console.log("here");
   try {
     const buffer = Buffer.from(fileContent, 'base64');
 
@@ -86,3 +87,7 @@ router.post('/', async function (request, response) {
 });
 
 module.exports = router;
+
+
+
+
