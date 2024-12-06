@@ -1,17 +1,11 @@
-<html lang="en"></html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title></title>
   <link rel="stylesheet" href="../public/css/scribble.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 
 <body>
@@ -45,163 +39,84 @@
       <div class="scribble-container">
         <div class="input-box">
           <p><b>What is the visual learning style?</b></p>
-          <p>
-            Visual learners are learners who retain information best by reading
-            text or using tools like mind maps and diagrams. <br />
-            Upload your text file below to receive your diagram!
-          </p>
+          <p>Visual learners are learners who retain information best by reading text or using tools like mind maps and diagrams. <br />Upload your text file below to receive your diagram!</p>
         </div>
 
-
-          <div class="input-box">
-            <form id="uploadForm" class="file-upload">
-              <input type="file" id="fileInput" />
-              <div id="fileInfo"></div>
-              <button type="submit" class="button-style">Submit File</button>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <section class="scribble-output">
-        <div class="output-box">
-          <p><b>Output</b></p>
-          <textarea id="outputBox" readonly></textarea>
-          <p></p>
-          <button
-            class="button-style"
-            onclick="document.getElementById('outputBox').value = ''"
-          >
-            Clear Output
-          </button>
-        </div>
-      </section>
-
-      <section class="scribble-recommendations">
-        <div class="recommendation-box" id="recommendationBox">
-          <p class="p-title"><b>Notes Editor</b></p>
-          <div class="button-container">
-            <button onclick="toggleBold()" title="Bold Text">Bold</button>
-            <button onclick="toggleItalic()" title="Italic Text">Italic</button>
-            <button onclick="alignText('left')" title="Left Align">
-              <i class="fas fa-align-left"></i>
-            </button>
-            <button onclick="alignText('center')" title="Center Align">
-              <i class="fas fa-align-center"></i>
-            </button>
-            <button onclick="alignText('right')" title="Right Align">
-              <i class="fas fa-align-right"></i>
-            </button>
-            <button onclick="transformText('uppercase')" title="Uppercase Text">
-              Uppercase
-            </button>
-            <button onclick="transformText('lowercase')" title="Lowercase Text">
-              Lowercase
-            </button>
-            <button
-              onclick="transformText('capitalize')"
-              title="Capitalize Text"
-            >
-              Capitalize
-            </button>
-            <button onclick="clearText()" title="Clear Text">Clear</button>
-          </div>
-          <div
-            id="notesArea"
-            contenteditable="true"
-            placeholder="Start typing your notes here..."
-          ></div>
-          <button class="save-button" onclick="saveNotes()">Save Notes</button>
-        </div>
-      </section>
-
-      <!-- <section class="auditory-section">
-      <div class="auditory-container">
-        <div class="top-row">
-          <div class="input-box">
-            <p>Choose File</p>
-            <form id="uploadForm" class="file-upload">
-              <input type="file" id="fileInput" />
-              <div id="fileInfo"></div>
-              <button type="submit" class="button-style">Submit File</button>
-            </form>
-          </div>
-          
-          <div class="output-box">
-            <p>Output</p>
-            <textarea id="outputBox" readonly></textarea>
-            <button class="button-style" onclick="document.getElementById('outputBox').value = ''">Clear Output</button>
-          </div>
-        </div>
-
-        <div class="notes-editor">
-          <p><b>Notes Editor</b></p>
-          <textarea id="notesArea" placeholder="Start typing your notes here..."></textarea>
-          <button class="button-style" onclick="saveNotes()">Save Notes</button>
-        </div>
-      </div>
-    </section> -->
-
-      <section id="contact" class="contact-us">
-        <div class="contact-info">
-          <h2>Get in Touch</h2>
-          <p>Have questions or feedback? We'd love to hear from you!</p>
-          <p><strong>Email</strong><br />support@learnfuse.com</p>
-          <p><strong>Phone</strong><br />+1 (000) 123-4567</p>
-          <div class="social-links">
-            <a href="#" aria-label="Facebook"
-              ><i class="fab fa-facebook"></i
-            ></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="Instagram"
-              ><i class="fab fa-instagram"></i
-            ></a>
-            <a href="#" aria-label="LinkedIn"
-              ><i class="fab fa-linkedin"></i
-            ></a>
-          </div>
-        </div>
-        <div class="contact-form">
-          <form>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Your Name"
-              required
-            />
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Your Email"
-              required
-            />
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Your Message"
-              required
-            ></textarea>
-            <button id="contact-btn" type="submit" class="cta-button">
-              Send Message
-            </button>
+        <div class="input-box">
+          <form id="uploadForm" class="file-upload">
+            <input type="file" id="fileInput" />
+            <div id="fileInfo"></div>
+            <button type="submit" class="button-style">Submit File</button>
           </form>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <footer>
-      <p>
-        &copy; 2024 LearnFuse. All rights reserved. |
-        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
-      </p>
-    </footer>
+    <section class="scribble-output">
+      <div class="output-box">
+        <p><b>Output</b></p>
+        <textarea id="outputBox" readonly></textarea>
+        <p></p>
+        <button class="button-style" onclick="document.getElementById('outputBox').value = ''">Clear Output</button>
+      </div>
+    </section>
 
-    <script src="../public/js/visual.js"></script>
-    <script src="../public/js/contact.js"></script>
-  </body>
+    <section class="scribble-recommendations">
+      <div class="recommendation-box" id="recommendationBox">
+        <p class="p-title"><b>Notes Editor</b></p>
+        <div class="button-container">
+          <button onclick="toggleBold()" title="Bold Text">Bold</button>
+          <button onclick="toggleItalic()" title="Italic Text">Italic</button>
+          <button onclick="alignText('left')" title="Left Align">
+            <i class="fas fa-align-left"></i>
+          </button>
+          <button onclick="alignText('center')" title="Center Align">
+            <i class="fas fa-align-center"></i>
+          </button>
+          <button onclick="alignText('right')" title="Right Align">
+            <i class="fas fa-align-right"></i>
+          </button>
+          <button onclick="transformText('uppercase')" title="Uppercase Text">Uppercase</button>
+          <button onclick="transformText('lowercase')" title="Lowercase Text">Lowercase</button>
+          <button onclick="transformText('capitalize')" title="Capitalize Text">Capitalize</button>
+          <button onclick="clearText()" title="Clear Text">Clear</button>
+        </div>
+        <div id="notesArea" contenteditable="true" placeholder="Start typing your notes here..."></div>
+        <button class="save-button" onclick="saveNotes()">Save Notes</button>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-us">
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <p>Have questions or feedback? We'd love to hear from you!</p>
+        <p><strong>Email</strong><br />support@learnfuse.com</p>
+        <p><strong>Phone</strong><br />+1 (000) 123-4567</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form>
+          <input type="text" id="name" name="name" placeholder="Your Name" required />
+          <input type="email" id="email" name="email" placeholder="Your Email" required />
+          <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+          <button id="contact-btn" type="submit" class="cta-button">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 LearnFuse. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  </footer>
+
+  <script src="../public/js/visual.js"></script>
+  <script src="../public/js/contact.js"></script>
+</body>
 </html>
-
 
 
