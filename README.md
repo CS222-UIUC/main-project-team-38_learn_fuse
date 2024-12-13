@@ -1,56 +1,123 @@
 ﻿# LearnFuse
 
-LearnFuse is a web application designed to help students learn in a personalized manner by converting textual information into various types of outputs, such as diagrams, videos, and more. Our tool aims to enrich and enhance the learning experience for all kinds of students, especially benefiting those with learning disabilities.
+## Project Overview
 
-## Features
+LearnFuse is an innovative educational technology platform designed to revolutionize learning experiences by addressing a critical gap in traditional educational approaches. Recognizing that students have diverse learning styles (visual, auditory, kinesthetic, and scribble), our application transforms standard textual information into personalized, adaptive learning content. By dynamically converting educational materials into multiple formats, LearnFuse empowers students to engage with content in ways that align with their individual preferences, making learning more accessible, engaging, and effective.
 
+Unlike existing one-size-fits-all educational tools, LearnFuse provides a holistic, adaptable learning experience that:
+- Supports multiple learning styles
+- Offers personalized content transformation
+- Enhances learning accessibility for diverse student populations, including those with learning differences
+
+We currently offer the following features:
 - Learning style quiz to recommend the best learning type for users
 - Conversion of textual data into various learning formats:
   - Visual: Diagrams and mind maps
-  - Auditory: Audio files, YouTube video recommendations, and podcast suggestions
-  - Kinesthetic: Hands-on learning method recommendations
+  - Auditory: Audio files and video recommendations
+  - Kinesthetic: Hands-on learning activity recommendations
   - Scribble: Key point extraction with a text editor for note-taking
 
-## Getting Started
+For more details, view the full project proposal [here](https://docs.google.com/document/d/1FR3GHlwkUnd_1oKBBvJWxg0UmtsypKB2ClXrJAhlIXw/edit?usp=sharing).
 
-These instructions will help you set up the project on your local machine for development and testing purposes.
+## Group Members and Roles
+- **Pritika Aggarwal (pa28)**: 
+  - Project Manager, Lead Developer, Tester
+  - Learning Type Quiz frontend
+  - Kinesthetic frontend
+  - Auditory frontend, Text-to-speech backend
+  - Privacy Policy Page
 
-### Prerequisites
+- **Shubhi Bhatia (shubhib2)**: 
+  - Project Manager, Lead Developer, Tester
+  - Home Page
+  - Quiz and Contact backend
+  - Kinesthetic backend
+  - Auditory video recs backend, TTS increased limits
 
-- Node.js (v14.0 or higher)
-- npm (v6.0 or higher)
+- **Aditya Jindal (ajindal3)**: 
+  - UI/UX Designer, Backend Developer, Tester
+  - Scribble page
+  - Visual backend
 
-### Tech Stack
+- **Prisha Thoguluva (prishat2)**: 
+  - UI/UX Designer, Backend Developer, Tester
+  - Visual page template, backend
+  - Quiz questions, logo design
+  - Terms of Service Page
 
-- Backend: Node.js
-- Frontend: HTML, CSS, JavaScript
-- Testing: Jest, ESLint, Prettier
-- CI/CD: GitHub Actions
+## Technical Architecture
 
-## Installation
+### Technical Architecture Diagram
 
-1. Clone the repository:
+![Technical Architecture](Docs\tech-arch.png)
 
-   ```
-   git clone https://github.com/CS222-UIUC/main-project-team-38_learn_fuse.git
-   ```
+### Components Overview
 
-2. Navigate to the project directory:
+#### Client
+Built with HTML, CSS, and JavaScript, comprising pages/sections for:
+- Home
+- Auditory
+- Scribble
+- Visual
+- Kinesthetic
+- Contact
 
-   ```
-   cd main-project-team-38_learn_fuse
-   ```
+#### Server
+The server components are in the `routes/` directory and were built with Node.js and Express.js to handle:
+- Video searching
+- Text-to-Speech generation
+- AI-based content processing (Scribble, Kinesthetic, Visual)
+- Email services
+- File parsing (PDF, Word, etc.)
 
-3. Install dependencies:
+#### External Services
+- **Groq AI API**: Text analysis and learning material suggestions
+- **Vimeo API**: Video recommendations
+- **Google TTS API**: Text-to-speech generation
+- **FFmpeg**: Audio processing
+- **Nodemailer**: Email services
+- **PDFParse & Mammoth**: File parsing
 
-   ```
-   npm install
-   ```
+## Prerequisites
 
-4. Start the development server:
-   ```
-   npm start
-   ```
+Before installation, ensure you have the following:
+- Node.js (v14.0.0 or later)
+- npm (v6.0.0 or later)
+
+## Installation Instructions
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/CS222-UIUC/main-project-team-38_learn_fuse.git
+cd LearnFuse
+```
+
+### 2. Environment Configuration
+Create a `.env` file in the project root with the following variables:
+```
+EMAIL_USER=your_gmail_for_nodemailer
+EMAIL_PASS=your_app_specific_password_for_EMAIL_USER
+GROQ_API_KEY=your_groq_api_key
+VIMEO_ACCESS_TOKEN=your_vimeo_access_token
+```
+
+**Note on API Keys**: 
+- All API keys are free
+- No credit card information needed
+- Obtain keys directly from respective service providers
+   - Groq API - https://console.groq.com/keys
+   - Vimeo App Registration and Access Token - https://developer.vimeo.com/apps
+
+### 3. Install Dependencies
+```bash
+npm install
+```
+
+### 4. Run the Application
+```bash
+node app.js
+```
+Visit [http://localhost:3000](http://localhost:3000) in your browser to access the application.
 
 ## Testing
 
@@ -77,14 +144,3 @@ For test coverage reports:
 ```
 npx jest --coverage
 ```
-
-## Team
-
-- Pritika Aggarwal
-- Shubhi Bhatia
-- Aditya Jindal
-- Prisha Thoguluva
-
-## UI Mock-Up
-
-Link: https://www.figma.com/design/9AsQmZl78qlnc4LPMTLvFQ/Untitled?node-id=6-20&t=IiPnRXbqyk4PON9e-1
