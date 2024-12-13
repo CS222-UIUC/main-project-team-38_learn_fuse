@@ -49,7 +49,7 @@ For more details, view the full project proposal [here](https://docs.google.com/
 
 ### Technical Architecture Diagram
 
-![Technical Architecture](Docs\tech-arch.png)
+![Technical Architecture](./Docs/tech-arch.png)
 
 ### Components Overview
 
