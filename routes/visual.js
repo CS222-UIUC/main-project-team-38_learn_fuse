@@ -68,6 +68,7 @@ router.post('/', async function (request, response) {
           content: generateMindMapPrompt(extractedText)
         }
       ],
+      // groq llama model
       model: 'llama-3.3-70b-versatile',
       temperature: 0.5,
       max_tokens: 1024

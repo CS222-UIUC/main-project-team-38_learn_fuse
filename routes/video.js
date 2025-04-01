@@ -129,6 +129,7 @@ router.post('/', async function (req, res) {
           content: prompt + data,
         },
       ],
+      // groq llama model
       model: 'llama-3.3-70b-versatile',
       temperature: 0.5,
       max_tokens: 128,
